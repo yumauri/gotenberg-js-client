@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "tslint-config-standard-plus",
+    "tslint-config-security",
+    "tslint-config-prettier"
+  ]
+}

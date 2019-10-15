@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice Statement</title>
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+.gray {
+    color: #707070;
+}
+
+.noBorder {
+    border: none !important;
+}
+
+.noPadding {
+    padding: 0 !important;
+}
+
+.alignTop {
+    vertical-align: top;
+}
+
+.header {
+    height: 80px;
+    padding: 0 40px;
+    border-bottom: 1px solid #707070;
+}
+
+.logo .setplexlogo {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1MCA1OSIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjUwIDU5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJtMjE2LjI5IDM2LjQ0M2wtNy4xNDUgNS4zOTNjLTAuMzYzIDAuMzUzLTAuODA4IDAuNTM2LTEuMzE3IDAuNTM2LTAuNjYzIDAtMS4xOTctMC4zMjItMS42MDgtMC44My0wLjQwNS0wLjUwMi0wLjYzOS0xLjA3OS0wLjYzOS0xLjcyNyAwLTAuNjM5IDAuMzE5LTEuMTUgMC44MTQtMS41NDYgMi42NjEtMi4wNjEgNS40MjUtNC4wMTQgNy45NzktNi4yMTMgMi4xNjgtMS44NjggMi40MDYtMi4xNzEtMWUtMyAtMy43MjRsLTcuOTc1LTYuMDc5Yy0wLjYwMi0wLjQxNC0wLjk5Ni0wLjk1MS0wLjk5Ni0xLjY5OCAwLTAuNjcyIDAuMjI3LTEuMjY1IDAuNzIyLTEuNzI0IDAuNDY1LTAuNDMyIDEuMDI0LTAuNjU3IDEuNjU4LTAuNjU3IDAuMjQ4IDAgMC41MDcgMC4wNDQgMC43NDkgMC4wOTggMC4zMTcgMC4wNzEgMC42MDIgMC4yMTMgMC44MzUgMC40MzlsNi4xMiA0LjY4NC0wLjAxNCAwLjAxOWMxLjY5OSAxLjI5MSAzLjM5OSAyLjU4MiA1LjA5OCAzLjg3MyAwLjAxOCAwLjAxMyAwLjAzNiAwLjAyNyAwLjA1NCAwLjA0MSAzLjIzMiAyLjE4IDIuNDE5IDQuMTE4LTAuMDY1IDUuOTU1LTEuNDM2IDEuMDYyLTIuODQ2IDIuMTM0LTQuMjY5IDMuMTZ6IiBmaWxsPSIjMDA3MEJBIi8+PHBhdGggZD0ibTIyNy4zOCAzMi40MzFsNy41NzIgNS44NDFjMC40OSAwLjM5MiAwLjgxIDAuOTA0IDAuODEgMS41NDIgMCAwLjY2My0wLjIyNCAxLjI1Ni0wLjYzOSAxLjc3MS0wLjQxMSAwLjUwOS0wLjk0NSAwLjgzMS0xLjYwOSAwLjgzMS0wLjQ5MSAwLTAuOTM4LTAuMjY0LTEuMzA0LTAuNTcxbC04LjY3Mi02LjQ5NiAzLjg0Mi0yLjkxOHoiIGZpbGw9IiMxQjFCMUIiLz48cGF0aCBkPSJtMjIzLjUyIDI1LjExOGw4LjQxLTYuNDEyYzAuNDQ1LTAuNDA1IDAuOTc1LTAuNjIyIDEuNTc4LTAuNjIyIDAuNjkzIDAgMS4yODggMC4yNTUgMS43NSAwLjc3MSAwLjQzMiAwLjQ4MiAwLjY3NSAxLjA0OSAwLjY3NSAxLjY5OHYwLjAyM2wtM2UtMyAwLjAyNGMtMC4wMzcgMC4yOTItMC4xMjggMC41NzItMC4yNiAwLjgzNC0wLjE2NiAwLjMzLTAuNDM5IDAuNjA5LTAuNzMyIDAuODQ0bC03LjU4IDUuNzU0LTMuODM4LTIuOTE0eiIgZmlsbD0iIzFCMUIxQiIvPjxwYXRoIGQ9Im0xNzEuODMgMzIuNjMxdjIuNzU0aDAuMDE2YzAuMjggMi4zNTEgNC4zMTIgMi40NDcgNi4wMTUgMi40NDdoMTguMjA4YzEuMzczIDAgMi4xNTkgMC43MjYgMi4xNTkgMi4xMTUgMCAxLjM5Ni0wLjc2MyAyLjE1OS0yLjE1OSAyLjE1OWgtMTcuMTAxYy01LjEyOCAwLTEyLjA3OC0xLTEyLjA3OC03LjUxN3YtOC44NTVjMC02LjQ0MiA2Ljg3OC03LjQyOCAxMS45NDQtNy40MjhoOS40MzFjNC40NzUgMCAxMC4xMjkgMC45NjIgMTAuMTI5IDYuNTQzdjUuNDljMCAxLjQ4NC0wLjgwNyAyLjI5Mi0yLjI5MiAyLjI5MmgtMjEuNDc5di00LjM2M2gxOC45MjF2LTMuMDIyYzAtMi40MDEtMi41NS0yLjcxMS00LjQzOC0yLjcxMWgtMTEuMjQ3Yy0xLjk0NCAwLTYuMDMyIDAuMTU3LTYuMDMyIDIuOTMzdjcuMTYzaDNlLTN6IiBmaWxsPSIjMUIxQjFCIi8+PHBhdGggZD0ibTE1Ny44IDQwLjA4YzAgMS41NTgtMC45ODIgMi4yNDctMi40NjkgMi4yNDctMS40OTIgMC0yLjUxMy0wLjY3LTIuNTEzLTIuMjQ3di0yNi44MzJjMC0xLjU1OCAwLjk4Mi0yLjI0OCAyLjQ2OS0yLjI0OCAxLjQ5MiAwIDIuNTEzIDAuNjcgMi41MTMgMi4yNDh2MjYuODMyeiIgZmlsbD0iIzFCMUIxQiIvPjxwYXRoIGQ9Im0xMTcuMjEgNDIuMTA3djQuNzkyYzAgMS41OTctMC45NzIgMi4zMzYtMi41MTMgMi4zMzYtMS41MjggMC0yLjQyNS0wLjc4LTIuNDI1LTIuMzM2di0yMS41NjNjMC02LjExOCA2LjYyNS03LjAzIDExLjQxNC03LjAzaDguMDU4YzQuNjkzIDAgMTEuOTg5IDAuNzU0IDExLjk4OSA2Ljk0MXY5LjUyYzAgNi4xMzItNS43OTcgNy4zNC0xMC44MzggNy4zNGgtMTIuODg5di00LjI3NGgxMy41OThjMi4wNTMgMCA1LjEwMy0wLjMwMSA1LjEwMy0yLjk3OHYtOS41MTljMC0yLjctNC40OC0yLjgtNi4yOTgtMi44aC05LjIxYy0xLjk0NyAwLTUuOTg4IDAuMTYyLTUuOTg4IDIuOTMzdjE2LjYzOGgtMWUtM3oiIGZpbGw9IiMxQjFCMUIiLz48cGF0aCBkPSJtNTQuMjU3IDMyLjYzMXYyLjQ5YzAgMi42MDkgNC4yNjcgMi43MTEgNi4wMzIgMi43MTFoMTguMjA4YzEuMzc0IDAgMi4xNTkgMC43MjYgMi4xNTkgMi4xMTUgMCAxLjM5Ni0wLjc2MyAyLjE1OS0yLjE1OSAyLjE1OWgtMTcuMWMtNS4xMjggMC0xMi4wNzctMS0xMi4wNzctNy41MTd2LTguODU1YzAtNi40NDIgNi44NzctNy40MjggMTEuOTQ0LTcuNDI4aDkuNDMxYzQuNDc1IDAgMTAuMTI5IDAuOTYyIDEwLjEyOSA2LjU0M3Y1LjQ5YzAgMS40ODQtMC44MDcgMi4yOTItMi4yOTIgMi4yOTJoLTIxLjQ4di00LjM2M2gxOC45MjJ2LTMuMDIyYzAtMi40MDEtMi41NS0yLjcxMS00LjQzOC0yLjcxMWgtMTEuMjQ3Yy0xLjk0NCAwLTYuMDMyIDAuMTU3LTYuMDMyIDIuOTMzdjcuMTYzeiIgZmlsbD0iIzFCMUIxQiIvPjxwYXRoIGQ9Im05MS4xMSAzMy41MzhsMWUtMyAtMTEuMDAzaC0xLjY0OWMtMS4zOTcgMC0yLjE1OS0wLjc2My0yLjE1OS0yLjE1OSAwLTEuMzggMC44MDgtMi4wNyAyLjE1OS0yLjA3aDEuNjQ5di01LjA1OGMwLTEuNTk2IDEuMDYyLTIuMjQ4IDIuNTU4LTIuMjQ4IDEuNDc2IDAgMi4zOCAwLjcyOSAyLjM4IDIuMjQ4djUuMDU4aDcuOTgxYzEuMzY3IDAgMi4xMTUgMC43NDggMi4xMTUgMi4xMTUgMCAxLjM2Ni0wLjc0OCAyLjExNS0yLjExNSAyLjExNWgtNy45ODF2MTIuNTg2YzAgMi42MDkgNC4yNjcgMi43MTEgNi4wMzIgMi43MTFoMS40NjFjMS4zNzQgMCAyLjE1OSAwLjcyNiAyLjE1OSAyLjExNSAwIDEuMzk2LTAuNzYzIDIuMTU5LTIuMTU5IDIuMTU5aC0wLjM1NGMtNS4xMjggMC0xMi4wNzgtMS0xMi4wNzgtNy41MTd2LTEuMDUyeiIgZmlsbD0iIzFCMUIxQiIvPjxwYXRoIGQ9Im00MS4yMDMgMzUuNjA4YzAgNS4zMDMtNC42ODYgNi40OTktOS4xNTQgNi40OTloLTE3LjhjLTEuMzYzIDAtMi4yNDgtMC42NTEtMi4yNDgtMi4wNzEgMC0xLjQ0NyAwLjgxNS0yLjIwMyAyLjI0OC0yLjIwM2gxOC41MDhjMS41NzMgMCAzLjM3NS0wLjMwNiAzLjM3NS0yLjIyNHYtMS4zNzNjMC0xLjk4Ny0yLjM2MS0yLjE3OS0zLjg2Mi0yLjE3OWgtOS44NzRjLTQuMjQxIDAtMTAuMTI5LTAuODA5LTEwLjEyOS02LjIzM3YtMS41MDZjMC01LjIwMyA1LjU0Ni02LjAxMSA5LjY0Mi02LjAxMWgxNi40NzFjMS4zOCAwIDIuMjAzIDAuNzA1IDIuMjAzIDIuMTE1IDAgMS40MDktMC44MjQgMi4xMTUtMi4yMDMgMi4xMTVoLTE3LjQ0NmMtMS4xOCAwLTMuNzMgMC4wODUtMy43MyAxLjc4MXYxLjQxOGMwIDIuMDMzIDMuMDcxIDIuMTM1IDQuNDgyIDIuMTM1aDEwLjA5NWM0LjMyNiAwIDkuNDIxIDEuMDI1IDkuNDIxIDYuMzY1djEuMzcyaDFlLTN6IiBmaWxsPSIjMUIxQjFCIi8+PC9nPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    width: 170px;
+    height: 35px;
+    -webkit-print-color-adjust: exact;
+}
+
+.contactsHeader {
+    float: right;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.contactsHeader p {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    margin: 5px 0;
+}
+
+.main {
+    padding: 20px;
+}
+
+.tableInvoices:before {
+    content: 'PAID';
+    position: absolute;
+    font-size: 110px;
+    letter-spacing: 15px;
+    font-weight: bold;
+    color: #daf1ce;
+    top: 150px;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.invoiceData {
+    height: 140px;
+}
+
+.invoiceData table tr td {
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+.invoiceData tr td:first-child {
+    color: #707070;
+}
+
+.innerDiv {
+    float: right;
+}
+
+.companyData {
+    height: 200px;
+}
+
+.companyData h4 {
+    margin-bottom: 5px;
+}
+
+.companyData p {
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.companyData p:nth-child(4) {
+    margin: 0;
+}
+
+.tableInvoices {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableInvoices td {
+    padding: 20px 10px;
+    border: 1px solid #707070;
+    min-width: 30px;
+}
+
+.tableInvoices th {
+    padding: 10px;
+    border: 1px solid #707070;
+    background-color: #e4f9ed;
+    min-width: 30px;
+}
+
+.tableInvoices tr:first-child th {
+    height: 56px;
+}
+
+/*remove border from first td from pre-last tr*/
+.tableInvoices tr:nth-last-child(2) td:first-child {
+    vertical-align: top;
+}
+
+.tableInvoices tr:nth-last-child(2) td:first-child p {
+    margin: 0;
+}
+
+.tableInvoices tr:nth-last-child(2) h4 {
+    margin: 0 0 10px;
+}
+
+.tableInvoices tr:nth-last-child(2) p {
+    margin: 5px 0;
+}
+
+.dashed p {
+    padding: 15px 10px;
+    margin: 0 !important;
+    border-bottom: 1px dashed #707070;
+}
+
+.dashed p:last-child {
+    border-bottom: none;
+}
+
+.innerTable {
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.innerTable tr:first-child th {
+    border-top: 0;
+}
+
+.innerTable tr:last-child td {
+    border-bottom: 0;
+}
+
+.innerTable tr th:first-child, .innerTable tr td:first-child {
+    border-left: 0;
+}
+
+.innerTable tr th:last-child, .innerTable tr td:last-child {
+    border-right: 0;
+}
+
+.innerTable tr:first-child td {
+    border-top: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.haveAnyQuestions {
+    font-size: 12px;
+}
+
+.footer {
+    width: 100%;
+    height: 141px;
+    padding: 0 0 0 40px;
+    box-sizing: border-box;
+    border-top: 1px solid #707070;
+}
+
+.contactsWrap {
+    float: right;
+}
+
+.contactsWrap div {
+    float: left;
+    margin: 30px 10px;
+}
+
+.contactsWrap div h4, .contactsWrap div p {
+    margin: 5px 0;
+}
+
+.contactsWrap div p {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+}
+
+.header:before, .footer:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+.verticAlign {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.gorizontAlign {
+    text-align: center;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+@media print {
+    @page {
+        size: A4;
+    }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .main {
+        -webkit-print-color-adjust: exact;
+    }
+    .gray {
+        color: #707070;
+        -webkit-print-color-adjust: exact;
+    }
+    .invoiceData tr td:first-child {
+        color: #707070;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .tableInvoices th {
+        background-color: #e4f9ed;
+        -webkit-print-color-adjust: exact;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+    .footer .logo {
+        margin-right: 50px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="logo verticAlign">
+        <div class="setplexlogo"></div>
+    </div>
+    <div class="contactsHeader">
+        <p>sales@setplex.com<br/>
+        tel.:+1-855-738-7539</p>
+    </div>
+</div>
+<div class="main">
+    <div class="invoiceData">
+        <div class="innerDiv">
+            <h2>INVOICE</h2>
+            <table>
+                <tr>
+                    <td>INVOICE NUMBER</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>INVOICE DATE</td>
+                    <td>17.07.2019</td>
+                </tr>
+                <!-- <tr>
+                    <td>PAGE</td>
+                    <td>1 FROM 1</td>
+                </tr> -->
+            </table>
+        </div>
+    </div>
+    <div class="companyData">
+        <h2>BILL TO</h2>
+        <h4>IIvanov</h4>
+        <p>Ivan Ivanov</p>
+        <p class="gray">Ohio / Columbus</p>
+        <p class="gray">926 Steensland Trail / United States of America</p>
+        <p class="gray"><b>ivan.ivanov99@gmail.com</b></p>
+    </div>
+    <div class="tableInvoicesWrap">
+        <table class="tableInvoices gray">
+            <tr>
+                <th>№</th>
+                <th>PROCESS DATE</th>
+                <td rowspan="2" class="noPadding alignTop">
+                    <table class="innerTable">
+                        <tr>
+                            <th>SERVICE</th>
+                            <th>AMOUNT</th>
+                            <th>PRICE, USD</th>
+                        </tr>
+                        <tr>
+                            <td>Nora &amp; Apps</td>
+                            <td class="gorizontAlign">100 seats</td>
+                            <td class="gorizontAlign">100</td>
+                        </tr>
+                        <tr>
+                            <td>CDN Streaming</td>
+                            <td class="gorizontAlign">100 seats</td>
+                            <td class="gorizontAlign">250</td>
+                        </tr>
+                        <tr>
+                            <td>VOD Storage</td>
+                            <td class="gorizontAlign">150 GBs</td>
+                            <td class="gorizontAlign">30</td>
+                        </tr>
+                        <tr>
+                            <td>Catchup Channels 7D</td>
+                            <td class="gorizontAlign">10 channels</td>
+                            <td class="gorizontAlign">350</td>
+                        </tr>
+                    </table>
+                </td>
+                <th>TOTAL AMOUNT, USD</th>
+                <th>PAYMENT TYPE</th>
+                <th>TRANSACTION ID</th>
+                <th>STATUS</th>
+            </tr>
+            <tr>
+                <td class="gorizontAlign">1</td>
+                <td class="gorizontAlign">17.07.2019</td>
+                <td class="gorizontAlign">730</td>
+                <td class="gorizontAlign">
+                    Credit Card - XXXX7654
+                    
+                </td>
+                <td class="gorizontAlign">60124519509</td>
+                <td class="gorizontAlign">PAID</td>
+            </tr>
+            <tr>
+                <td rowspan="2" colspan="5" class="noBorder">
+                    <h4>COMMENTS</h4>
+                    <p>1. Purpose of this invoice is <b class="lowercase">REGISTRATION</b> of services</p>
+                    <p></p>
+                </td>
+                <td class="bold noPadding dashed"><p>SUBTOTAL</p>
+                    <p>TAX RATE</p>
+                    <p>TAX</p></td>
+                <td class="gorizontAlign bold noPadding dashed"><p>730</p>
+                    <p>0%</p>
+                    <p>0</p></td>
+            </tr>
+            <tr>
+                <th>TOTAL, USD</th>
+                <th>730</th>
+            </tr>
+        </table>
+    </div>
+    <div class="haveAnyQuestions gray">
+        If you have any questions about this invoice, please contact us<br/>
+        tel.: +1-855-738-7539<br/>
+        sales@setplex.com
+    </div>
+</div>
+<div class="footer">
+    <div class="logo verticAlign">
+        <div class="setplexlogo"></div>
+    </div>
+    <div class="contactsWrap verticAlign">
+        <div>
+            <h4>ADDRESS</h4>
+            <p>Setplex LLC<br/>
+            231 Central Ave 4th Floor<br/>
+            White Plains, NY 10606</p>
+        </div>
+        <div>
+            <h4>CONTACTS</h4>
+            <p>sales@setplex.com<br/>
+            tel.: +1-855-738-7539<br/>
+            fax.: +1-718-701-4407</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
