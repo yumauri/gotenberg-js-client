@@ -22,6 +22,9 @@
     "url": "https://github.com/yumauri/gotenberg-js-client/issues"
   },
   "homepage": "https://github.com/yumauri/gotenberg-js-client#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "jest --config jestconfig.json",
