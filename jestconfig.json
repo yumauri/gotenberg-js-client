@@ -2,5 +2,11 @@
   "transform": {
     "^.+\\.ts$": "ts-jest"
   },
-  "testRegex": ".+\\.spec\\.ts$"
+  "rootDir": "src",
+  "collectCoverage": true,
+  "coverageReporters": ["text"],
+  "collectCoverageFrom": ["**/*.ts"],
+  "testRegex": ".+\\.spec\\.ts$",
+  "maxConcurrency": 3,
+  "testEnvironment": "node"
 }

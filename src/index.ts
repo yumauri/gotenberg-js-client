@@ -1,35 +1,22 @@
-export * from './client'
-export * from './request'
-export * from './document'
+// export main entry and finish functions
+export { default as gotenberg } from './gotenberg'
+export { default as please } from './please'
+
+// export conversion functions
+export { default as markdown } from './markdown'
+export { default as convert } from './convert'
+export { default as office } from './office'
+export { default as merge } from './merge'
+export { default as ping } from './ping'
+export { default as html } from './html'
+export { default as url } from './url'
+
+// export modifiers functions and constants
+export { default as set } from './set'
+export { default as to } from './to'
+export * from './set-helpers'
+export * from './to-helpers'
 export * from './page'
 
-// import { Client } from './client'
-// import { FileDocument } from './document'
-// import { HTMLRequest } from './request'
-// import { A4 } from './page'
-// import { createWriteStream } from 'fs'
-
-//
-
-//
-/*
-const client = new Client('http://localhost:3000')
-
-client
-  .do(
-    new HTMLRequest(new FileDocument('index.html', '../../test/index.html'))
-      .margins({
-        top: 0,
-        right: 0.2, // ~5mm
-        bottom: 0,
-        left: 0.2, // ~5mm
-      })
-      .paperSize(A4)
-  )
-  .then(res => {
-    res.pipe(createWriteStream('test/invoice_statement.pdf'))
-  })
-  .catch(e => {
-    console.log('Error:', e)
-  })
-*/
+// export pipe helper
+export { default as pipe } from './_pipe'

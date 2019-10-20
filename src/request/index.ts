@@ -1,5 +1,0 @@
-export { HTMLRequest } from './HTMLRequest'
-export { MarkdownRequest } from './MarkdownRequest'
-export { MergeRequest } from './MergeRequest'
-export { OfficeRequest } from './OfficeRequest'
-export { URLRequest } from './URLRequest'

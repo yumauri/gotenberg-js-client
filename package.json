@@ -1,19 +1,28 @@
 {
   "name": "gotenberg-js-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple JS/TS for interacting with a Gotenberg API",
+  "author": "Victor Didenko <yumaa.verdin@gmail.com> (https://yumaa.name)",
+  "license": "MIT",
   "keywords": [
     "gotenberg",
     "pdf",
     "puppeteer"
   ],
-  "files": [
-    "lib/**/*"
-  ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "author": "Victor Didenko <yumaa.verdin@gmail.com>",
-  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "jest --config jestconfig.json",
+    "build": "npm run clean && tsc",
+    "clean": "rimraf lib",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json && npm run spell",
+    "spell": "yaspeller .",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yumauri/gotenberg-js-client"
@@ -22,21 +31,14 @@
     "url": "https://github.com/yumauri/gotenberg-js-client/issues"
   },
   "homepage": "https://github.com/yumauri/gotenberg-js-client#readme",
-  "scripts": {
-    "dev": "ts-node src/index.ts",
-    "test": "jest --config jestconfig.json",
-    "build": "npm run clean && tsc",
-    "clean": "rimraf lib",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
   "dependencies": {
-    "@types/node": "^12.7.12",
+    "@types/node": "^10.9.0",
     "form-data": "^2.5.1"
   },
   "devDependencies": {
@@ -50,6 +52,10 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-security": "^1.16.0",
     "tslint-config-standard-plus": "^2.2.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "yaspeller": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=10.9.0"
   }
 }
