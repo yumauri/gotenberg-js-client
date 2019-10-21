@@ -1,6 +1,12 @@
 # Gotenberg JS/TS client
 
-A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachine.github.io/gotenberg/) API.
+A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachine.github.io/gotenberg/) API.<br>
+[Gotenberg](https://thecodingmachine.github.io/gotenberg/) is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
+
+- HTML and Markdown conversions using Google Chrome headless
+- Office conversions (.txt, .rtf, .docx, .doc, .odt, .pptx, .ppt, .odp and so on) using [unoconv](https://github.com/dagwieers/unoconv)
+- Assets: send your header, footer, images, fonts, stylesheets and so on for converting your HTML and Markdown to beaufitul PDFs!
+- Easily interact with the API using our [Go](https://github.com/thecodingmachine/gotenberg-go-client) and [PHP](https://github.com/thecodingmachine/gotenberg-php-client) libraries (and now - JavaScript too ;)
 
 ## Install
 
@@ -81,7 +87,7 @@ const pdf = await toPDF([
 ])
 ```
 
-Instead of array you can use any [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols), like `Map`, `Set`, `arguments`, generator function, or any object with `[Symbol.iterator]` defined.
+Instead of array you can use any [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols), like `Map`, `Set`, `arguments`, iterator from generator function, or any object with `[Symbol.iterator]` defined.
 
 ## Paper size, margins, orientation
 
@@ -162,10 +168,7 @@ There are some _modifiers_ functions as well, like `filename`, `timeout`, `delay
 
 ```typescript
 //...
-set({
-  filename('foo.pdf'),
-  timeout(2.5),
-})
+set(filename('foo.pdf'), timeout(2.5))
 //...
 ```
 
@@ -203,12 +206,12 @@ const toPDF = source =>
 If you don't like to have simple imported names in your namespace, you can use `import *` syntax:
 
 ```typescript
-import * as ಠ from 'gotenberg-js-client'
+import * as got from 'gotenberg-js-client'
 
-const toPDF = ಠ.pipe(
-  ಠ.gotenberg('http://localhost:3000'),
-  ಠ.convert,
-  ಠ.html,
-  ಠ.please
+const toPDF = got.pipe(
+  got.gotenberg('http://localhost:3000'),
+  got.convert,
+  got.html,
+  got.please
 )
 ```
