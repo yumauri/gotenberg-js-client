@@ -1,4 +1,4 @@
-# Gotenberg JS/TS client [![Build Status](https://travis-ci.org/yumauri/gotenberg-js-client.svg?branch=master)](https://travis-ci.org/yumauri/gotenberg-js-client)
+# Gotenberg JS/TS client [![Build Status](https://travis-ci.org/yumauri/gotenberg-js-client.svg?branch=master)](https://travis-ci.org/yumauri/gotenberg-js-client) [![Coverage Status](https://coveralls.io/repos/github/yumauri/gotenberg-js-client/badge.svg?branch=master)](https://coveralls.io/github/yumauri/gotenberg-js-client?branch=master)
 
 A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachine.github.io/gotenberg/) API.<br>
 [Gotenberg](https://thecodingmachine.github.io/gotenberg/) is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
