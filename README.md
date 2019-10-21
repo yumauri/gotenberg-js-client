@@ -193,7 +193,7 @@ If you happen to use this package from JavaScript, you will, obviously, lost typ
 ```javascript
 const toPDF = source =>
   source
-  |> gotenberg(GOTENBERG_API)
+  |> gotenberg('http://localhost:3000')
   |> convert
   |> html
   |> to(a4, noMargins)
