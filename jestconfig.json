@@ -2,10 +2,9 @@
   "transform": {
     "^.+\\.ts$": "ts-jest"
   },
-  "rootDir": "src",
   "collectCoverage": true,
-  "coverageReporters": ["text"],
-  "collectCoverageFrom": ["**/*.ts"],
+  "coverageReporters": ["text", "lcov"],
+  "collectCoverageFrom": ["src/**/*.ts"],
   "testRegex": ".+\\.spec\\.ts$",
   "maxConcurrency": 3,
   "testEnvironment": "node"
