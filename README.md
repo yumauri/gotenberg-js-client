@@ -5,7 +5,7 @@ A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachin
 
 - HTML and Markdown conversions using Google Chrome headless
 - Office conversions (.txt, .rtf, .docx, .doc, .odt, .pptx, .ppt, .odp and so on) using [unoconv](https://github.com/dagwieers/unoconv)
-- Assets: send your header, footer, images, fonts, stylesheets and so on for converting your HTML and Markdown to beaufitul PDFs!
+- Assets: send your header, footer, images, fonts, stylesheets and so on for converting your HTML and Markdown to beautiful PDFs!
 - Easily interact with the API using [Go](https://github.com/thecodingmachine/gotenberg-go-client) and [PHP](https://github.com/thecodingmachine/gotenberg-php-client) libraries (and now - JavaScript too ;)
 
 ## Install
@@ -53,6 +53,8 @@ app.get('/pdf', function(req, res) {
   pdf.pipe(res)
 })
 ```
+
+You can define any source like `string`, `Buffer`, [file link](https://en.wikipedia.org/wiki/File_URI_scheme), `stream.Readable`, or `URL` (for url conversions).
 
 ## Header, footer and assets
 
@@ -170,6 +172,75 @@ There are some _modifiers_ functions as well, like `filename`, `timeout`, `delay
 //...
 set(filename('foo.pdf'), timeout(2.5))
 //...
+```
+
+## Markdown
+
+```typescript
+import { pipe, gotenberg, convert, markdown, please } from 'gotenberg-js-client'
+
+const toPDF = pipe(
+  gotenberg('http://localhost:3000'),
+  convert,
+  markdown,
+  please
+)
+
+// --- 8< ---
+
+const pdf = await toPDF({
+  'index.html': `<!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>My PDF</title>
+      </head>
+      <body>
+        {{ toHTML .DirPath "file.md" }}
+      </body>
+    </html>`,
+  'file.md': 'file://file.md',
+})
+```
+
+## Office
+
+```typescript
+import { pipe, gotenberg, convert, office, to, landscape, set, filename, please } from 'gotenberg-js-client'
+
+const toPDF = pipe(
+  gotenberg('http://localhost:3000'),
+  convert,
+  office,
+  to(landscape),
+  set(filename('result.pdf'))
+  please
+)
+
+// --- 8< ---
+
+const pdf = await toPDF('file://document.docx')
+```
+
+## Url
+
+```typescript
+import { pipe, gotenberg, convert, url, please } from 'gotenberg-js-client'
+
+const toPDF = pipe(
+  gotenberg('http://localhost:3000'),
+  convert,
+  url,
+  please
+)
+
+// --- 8< ---
+
+// you can use link as string
+const pdf = await toPDF('https://google.com')
+
+// or URL object
+const pdf = await toPDF(new URL('https://google.com'))
 ```
 
 ## Merge
