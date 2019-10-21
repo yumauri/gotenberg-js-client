@@ -189,31 +189,46 @@ const toPDF = pipe(
 // --- 8< ---
 
 const pdf = await toPDF({
-  'index.html': `<!doctype html>
+  'index.html': `
+    <!doctype html>
     <html lang="en">
       <head>
         <meta charset="utf-8">
         <title>My PDF</title>
       </head>
       <body>
-        {{ toHTML .DirPath "file.md" }}
+        {{ toHTML .DirPath "content.md" }}
       </body>
     </html>`,
-  'file.md': 'file://file.md',
+
+  'content.md': `
+    # My awesome markdown
+    ...
+  `,
 })
 ```
 
 ## Office
 
 ```typescript
-import { pipe, gotenberg, convert, office, to, landscape, set, filename, please } from 'gotenberg-js-client'
+import {
+  pipe,
+  gotenberg,
+  convert,
+  office,
+  to,
+  landscape,
+  set,
+  filename,
+  please,
+} from 'gotenberg-js-client'
 
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
   office,
   to(landscape),
-  set(filename('result.pdf'))
+  set(filename('result.pdf')),
   please
 )
 
