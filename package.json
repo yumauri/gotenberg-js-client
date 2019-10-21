@@ -7,7 +7,8 @@
   "keywords": [
     "gotenberg",
     "pdf",
-    "puppeteer"
+    "puppeteer",
+    "unoconv"
   ],
   "scripts": {
     "dev": "ts-node src/index.ts",
