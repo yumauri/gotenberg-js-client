@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/yumauri/gotenberg-js-client/workflows/build/badge.svg)](https://github.com/yumauri/gotenberg-js-client/actions?workflow=build)
 [![Coverage Status](https://coveralls.io/repos/github/yumauri/gotenberg-js-client/badge.svg?branch=master)](https://coveralls.io/github/yumauri/gotenberg-js-client?branch=master)
-[![License](https://img.shields.io/github/license/yumauri/gotenberg-js-client.svg?color=blue)](./LICENSE)
+[![License](https://img.shields.io/github/license/yumauri/gotenberg-js-client.svg?color=yellow)](./LICENSE)
 
 A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachine.github.io/gotenberg/) API.<br>
 [Gotenberg](https://thecodingmachine.github.io/gotenberg/) is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
