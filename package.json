@@ -44,7 +44,6 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
-    "coveralls": "^3.0.7",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
