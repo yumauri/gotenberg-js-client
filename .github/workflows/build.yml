@@ -14,7 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: Setup Node
+
+      - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
@@ -22,13 +23,16 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Lint
+      - name: Linting and check spelling
         run: yarn lint
 
-      - name: Test
+      - name: Test and collect coverage
         run: yarn test
 
-      - name: Coveralls
+      - name: Build package
+        run: yarn build
+
+      - name: Push coverage to Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}

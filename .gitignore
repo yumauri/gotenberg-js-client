@@ -1,6 +1,7 @@
 /node_modules/
 /coverage/
 /lib/
+/pkg/
 yarn-error.log
 .DS_Store
 .project

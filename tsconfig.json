@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "declaration": true,
+    "target": "es2019",
+    "module": "esnext",
+    // "lib": [], // there is problem with URL, when empty :( https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34960
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./lib",
+    "declaration": true,
     "baseUrl": "./src"
   },
   "include": ["src/**/*"],

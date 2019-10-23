@@ -1,6 +1,6 @@
-import * as http from 'http'
-import * as https from 'https'
-import * as FormData from 'form-data'
+import http from 'http'
+import https from 'https'
+import FormData from 'form-data'
 import { GotenbergClientFunction } from './'
 
 /**

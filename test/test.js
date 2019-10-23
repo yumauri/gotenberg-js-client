@@ -1,5 +1,5 @@
-import { createWriteStream } from 'fs'
-import { a4, convert, gotenberg, html, pipe, please, to } from '../src'
+const { createWriteStream } = require('fs')
+const { a4, convert, gotenberg, html, pipe, please, to } = require('../pkg')
 
 // need to run Gotenberg like this
 // docker run --rm -p 3500:3000 thecodingmachine/gotenberg:6

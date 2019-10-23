@@ -13,16 +13,23 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "jest --config jestconfig.json",
-    "build": "npm run clean && tsc",
-    "clean": "rimraf lib",
+    "build": "pika build",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json && npm run spell",
-    "spell": "yaspeller .",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "lint": "tslint -p tsconfig.json && yarn spell",
+    "spell": "yaspeller ."
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node",
+        {
+          "minNodeVersion": "10"
+        }
+      ]
+    ]
   },
   "repository": {
     "type": "git",
@@ -32,27 +39,23 @@
     "url": "https://github.com/yumauri/gotenberg-js-client/issues"
   },
   "homepage": "https://github.com/yumauri/gotenberg-js-client#readme",
-  "files": [
-    "lib/**/*"
-  ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "sideEffects": false,
   "dependencies": {
     "@types/node": "^10.9.0",
     "form-data": "^2.5.1"
   },
   "devDependencies": {
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.7.0",
+    "@pika/plugin-ts-standard-pkg": "^0.7.0",
     "@types/jest": "^24.0.19",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-security": "^1.16.0",
-    "tslint-config-standard-plus": "^2.2.0",
+    "tslint-config-standard-plus": "^2.3.0",
     "typescript": "^3.6.4",
     "yaspeller": "^6.0.2"
   },

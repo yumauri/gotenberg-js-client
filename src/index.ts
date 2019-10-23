@@ -20,3 +20,6 @@ export * from './page'
 
 // export pipe helper
 export { default as pipe } from './_pipe'
+
+// export types
+export * from './_types'
