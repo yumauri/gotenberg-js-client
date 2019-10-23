@@ -16,7 +16,9 @@
     "build": "pika build",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json && yarn spell",
-    "spell": "yaspeller ."
+    "spell": "yaspeller .",
+    "release": "pika publish",
+    "version": "yarn build"
   },
   "@pika/pack": {
     "pipeline": [
