@@ -8,10 +8,7 @@ import type from './_type'
  * @return new OfficeRequest, doesn't modify original Request
  */
 function office(request: Request) {
-  return pipe(
-    path('/office'),
-    type(RequestType.Office)
-  )(request)
+  return pipe(path('/office'), type(RequestType.Office))(request)
 }
 
 export default office

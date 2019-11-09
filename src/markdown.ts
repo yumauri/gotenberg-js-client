@@ -24,15 +24,8 @@ function markdown(r: Request): MarkdownRequest
 // implementation
 function markdown(x: Request | ChromeRequestFields) {
   return 'type' in x
-    ? pipe(
-        path('/markdown'),
-        type(RequestType.Markdown)
-      )(x)
-    : pipe(
-        fields(x),
-        path('/markdown'),
-        type(RequestType.Markdown)
-      )
+    ? pipe(path('/markdown'), type(RequestType.Markdown))(x)
+    : pipe(fields(x), path('/markdown'), type(RequestType.Markdown))
 }
 
 export default markdown

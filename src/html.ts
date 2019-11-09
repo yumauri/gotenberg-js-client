@@ -24,15 +24,8 @@ function html(r: Request): HtmlRequest
 // implementation
 function html(x: Request | ChromeRequestFields) {
   return 'type' in x
-    ? pipe(
-        path('/html'),
-        type(RequestType.Html)
-      )(x)
-    : pipe(
-        fields(x),
-        path('/html'),
-        type(RequestType.Html)
-      )
+    ? pipe(path('/html'), type(RequestType.Html))(x)
+    : pipe(fields(x), path('/html'), type(RequestType.Html))
 }
 
 export default html

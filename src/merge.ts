@@ -13,10 +13,7 @@ function merge(request: Request) {
     throw new Error('Invalid source, should be iterable or object')
   }
 
-  return pipe(
-    path('/merge'),
-    type(RequestType.Merge)
-  )(request)
+  return pipe(path('/merge'), type(RequestType.Merge))(request)
 }
 
 export default merge

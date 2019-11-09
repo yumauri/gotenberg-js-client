@@ -8,10 +8,7 @@ import type from './_type'
  * @return new PingRequest, doesn't modify original Request
  */
 function ping(request: Request) {
-  return pipe(
-    path('/ping'),
-    type(RequestType.Ping)
-  )(request)
+  return pipe(path('/ping'), type(RequestType.Ping))(request)
 }
 
 export default ping
