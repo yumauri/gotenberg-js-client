@@ -2,6 +2,7 @@ import {
   delay,
   filename,
   googleChromeRpccBufferSize,
+  range,
   timeout,
   webhook,
 } from './set-helpers'
@@ -36,4 +37,10 @@ test('Test `googleChromeRpccBufferSize` function', () => {
   const object = {}
   googleChromeRpccBufferSize(9999)(object)
   expect(object).toEqual({ googleChromeRpccBufferSize: 9999 })
+})
+
+test('Test `range` function', () => {
+  const object = {}
+  range('1-1')(object)
+  expect(object).toEqual({ pageRanges: '1-1' })
 })

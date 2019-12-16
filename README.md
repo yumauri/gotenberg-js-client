@@ -31,6 +31,7 @@ $ npm install --save gotenberg-js-client
 ```typescript
 import { pipe, gotenberg, convert, html, please } from 'gotenberg-js-client'
 
+// prettier-ignore
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
@@ -180,6 +181,14 @@ set(filename('foo.pdf'), timeout(2.5))
 //...
 ```
 
+Also you can specify page ranges using `set(range)` (will not work with `merge`):
+
+```typescript
+//...
+set(range('1-1'))
+//...
+```
+
 ## Markdown
 
 ```typescript
@@ -248,6 +257,7 @@ const pdf = await toPDF('file://document.docx')
 ```typescript
 import { pipe, gotenberg, convert, url, please } from 'gotenberg-js-client'
 
+// prettier-ignore
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
@@ -264,6 +274,24 @@ const pdf = await toPDF('https://google.com')
 const pdf = await toPDF(new URL('https://google.com'))
 ```
 
+You can set remote url header (for example, for [authentication](https://github.com/thecodingmachine/gotenberg/issues/81) or [host specifying](https://github.com/thecodingmachine/gotenberg/issues/116)) with helper `add(header)` (or `add(headers)`, or both):
+
+```typescript
+const toPDF = pipe(
+  gotenberg('http://localhost:3000'),
+  convert,
+  url,
+  add(
+    header('Foo-Header', 'Foo'),
+    header('Bar-Header', 'Bar'),
+    headers({ 'Baz1-Header': 'Baz1', 'Baz2-Header': 'Baz2' })
+  ),
+  please
+)
+```
+
+(This also applies for Webhook headers, just use `webhookHeader` instead of `header` and `webhookHeaders` instead of `headers`).
+
 ## Merge
 
 Like you would think:
@@ -271,6 +299,7 @@ Like you would think:
 ```typescript
 import { pipe, gotenberg, merge, please } from 'gotenberg-js-client'
 
+// prettier-ignore
 const toMergedPDF = pipe(
   gotenberg('http://localhost:3000'),
   merge,

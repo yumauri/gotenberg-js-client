@@ -48,6 +48,9 @@ export type HtmlRequestFields = {
   marginLeft?: number
   marginRight?: number
   landscape?: boolean
+
+  // https://thecodingmachine.github.io/gotenberg/#html.page_ranges
+  pageRanges?: string
 }
 
 // markdown conversion form fields
@@ -61,6 +64,9 @@ export type OfficeRequestFields = {
   // By default, it will be rendered with portrait orientation
   // https://thecodingmachine.github.io/gotenberg/#office.orientation
   landscape?: boolean
+
+  // https://thecodingmachine.github.io/gotenberg/#office.page_ranges
+  pageRanges?: string
 }
 
 // url conversion form fields
@@ -122,6 +128,15 @@ export type Source =
 export type TupleStreamsSource = [string, NodeJS.ReadableStream]
 
 ////////////////////////////////////////////////////////////////////////////////
+/// request headers ////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+export type HeadersModifier = (headers: HttpHeaders) => void
+export type HttpHeaders = {
+  [header: string]: number | string
+}
+
+////////////////////////////////////////////////////////////////////////////////
 /// request types //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -141,6 +156,7 @@ export type Request = {
   client: GotenbergClient
   source?: Source
   fields: RequestFields
+  headers?: HttpHeaders
 }
 
 export type UrlRequest = Request & { type: RequestType.Url }

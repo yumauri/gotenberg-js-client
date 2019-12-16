@@ -1,4 +1,5 @@
 import FormData from 'form-data'
+import { OutgoingHttpHeaders } from 'http'
 
 ////////////////////////////////////////////////////////////////////////////////
 /// gotenberg client ///////////////////////////////////////////////////////////
@@ -8,7 +9,11 @@ import FormData from 'form-data'
  * Gotenberg client interface
  */
 export interface GotenbergClient {
-  post: (url: string, data: FormData) => Promise<NodeJS.ReadableStream>
+  post: (
+    url: string,
+    data: FormData,
+    headers?: OutgoingHttpHeaders
+  ) => Promise<NodeJS.ReadableStream>
   get?: (url: string) => Promise<NodeJS.ReadableStream>
 }
 
