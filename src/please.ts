@@ -65,7 +65,7 @@ function please(request: TypedRequest): Promise<NodeJS.ReadableStream | void> {
   // any other conversion request
   const sources = toStreams(request.source)
   const form = formdata(request.fields, sources)
-  return request.client.post(request.url, form)
+  return request.client.post(request.url, form, request.headers)
 }
 
 export default please

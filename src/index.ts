@@ -12,8 +12,10 @@ export { default as html } from './html'
 export { default as url } from './url'
 
 // export modifiers functions and constants
+export { default as add } from './add'
 export { default as set } from './set'
 export { default as to } from './to'
+export * from './add-helpers'
 export * from './set-helpers'
 export * from './to-helpers'
 export * from './page'

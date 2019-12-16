@@ -21,13 +21,14 @@ const parse = (
 export function post(
   this: object | null,
   url: string,
-  data: FormData
+  data: FormData,
+  headers?: http.OutgoingHttpHeaders
 ): Promise<NodeJS.ReadableStream> {
   const [_url, request] = parse(url)
   return new Promise((resolve, reject) => {
     const req = request(_url, {
       method: 'POST',
-      headers: data.getHeaders(),
+      headers: { ...data.getHeaders(), ...headers },
       ...this, // extends with config options
     })
 
