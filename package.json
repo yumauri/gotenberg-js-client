@@ -1,6 +1,6 @@
 {
   "name": "gotenberg-js-client",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A simple JS/TS for interacting with a Gotenberg API",
   "author": "Victor Didenko <yumaa.verdin@gmail.com> (https://yumaa.name)",
   "license": "MIT",
