@@ -54,3 +54,13 @@ export const googleChromeRpccBufferSize = (
   googleChromeRpccBufferSize: number
 ): FieldsModifier => (fields: RequestFields) =>
   (fields.googleChromeRpccBufferSize = googleChromeRpccBufferSize)
+
+/**
+ * Modifies `pageRanges` form field
+ *
+ * https://thecodingmachine.github.io/gotenberg/#html.page_ranges
+ * https://thecodingmachine.github.io/gotenberg/#office.page_ranges
+ */
+export const range = (range: string): FieldsModifier => (
+  fields: RequestFields
+) => (fields.pageRanges = range)

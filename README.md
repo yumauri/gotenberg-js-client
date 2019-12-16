@@ -181,6 +181,14 @@ set(filename('foo.pdf'), timeout(2.5))
 //...
 ```
 
+Also you can specify page ranges using `set(range)` (will not work with `merge`):
+
+```typescript
+//...
+set(range('1-1'))
+//...
+```
+
 ## Markdown
 
 ```typescript
@@ -268,7 +276,7 @@ const pdf = await toPDF(new URL('https://google.com'))
 
 You can set remote url header (for example, for [authentication](https://github.com/thecodingmachine/gotenberg/issues/81) or [host specifying](https://github.com/thecodingmachine/gotenberg/issues/116)) with helper `add(header)` (or `add(headers)`, or both):
 
-```javascript
+```typescript
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
