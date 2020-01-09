@@ -37,8 +37,20 @@ export function post(
       if (res.statusCode === 200) {
         resolve(res)
       } else {
-        res.resume() // ignore response body
-        reject(new Error(res.statusCode + ' ' + res.statusMessage))
+        let error = res.statusCode + ' ' + res.statusMessage
+
+        // something is wrong, get error message from Gotenberg
+        const chunks: Buffer[] = []
+        res.on('data', (chunk: Buffer) => chunks.push(chunk))
+        res.on('end', () => {
+          try {
+            error +=
+              ' (' + JSON.parse(Buffer.concat(chunks).toString()).message + ')'
+          } catch (err) {
+            // ignore
+          }
+          reject(new Error(error))
+        })
       }
     })
 

@@ -6,7 +6,7 @@ import {
   TupleStreamsSource,
   TypedRequest,
 } from './_types'
-import { toStreams } from './_source-converters'
+import { DEFAULT_FILENAME, toStreams } from './_source-converters'
 
 /**
  * Helper function to convert fields and files to form data
@@ -32,6 +32,49 @@ const formdata = (fields: RequestFields, files: TupleStreamsSource[]) => {
   }
 
   return data
+}
+
+/**
+ * Validate sources' file names
+ */
+function validateSources(
+  type: RequestType,
+  sources: TupleStreamsSource[]
+): TupleStreamsSource[] {
+  const filenames = sources.map(source => source[0])
+
+  // check for duplicates
+  const duplicates = filenames.filter(
+    (name, index, arr) => arr.indexOf(name) !== index
+  )
+  if (duplicates.length > 0) {
+    throw new Error(
+      `There are duplicates in file names: ${duplicates.join(',')}`
+    )
+  }
+
+  // check sources against request type
+
+  const hasDefault = filenames.includes(DEFAULT_FILENAME)
+  if (
+    (type === RequestType.Html || type === RequestType.Markdown) &&
+    !hasDefault
+  ) {
+    throw new Error(
+      `File "${DEFAULT_FILENAME}" is required for ${
+        type === RequestType.Html ? 'HTML' : 'Markdown'
+      } conversion`
+    )
+  }
+
+  if (type === RequestType.Office && hasDefault) {
+    throw new Error(
+      `Default filename "${DEFAULT_FILENAME}" is not allowed for Office convertion, ` +
+        `looks like you didn't set filename for document`
+    )
+  }
+
+  return sources
 }
 
 /**
@@ -63,7 +106,7 @@ function please(request: TypedRequest): Promise<NodeJS.ReadableStream | void> {
   }
 
   // any other conversion request
-  const sources = toStreams(request.source)
+  const sources = validateSources(request.type, toStreams(request.source))
   const form = formdata(request.fields, sources)
   return request.client.post(request.url, form, request.headers)
 }

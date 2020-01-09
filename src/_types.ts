@@ -124,6 +124,7 @@ export type Source =
   | PlainSource
   | TupleSource
   | ObjectSource
+  | Array<PlainSource | TupleSource | ObjectSource>
   | Iterable<PlainSource | TupleSource | ObjectSource>
 export type TupleStreamsSource = [string, NodeJS.ReadableStream]
 

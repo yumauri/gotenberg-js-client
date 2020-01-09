@@ -20,6 +20,8 @@ import {
   isURL,
 } from './_source-checkers'
 
+export const DEFAULT_FILENAME = 'index.html'
+
 /**
  * Convert any possible source to tuples array
  */
@@ -30,14 +32,14 @@ export const toTuples = (source: Source, recursive = false): TupleSource[] => {
   // if single file uri
   if (isFileUri(source)) {
     return !recursive && extname(source) === '.html'
-      ? [['index.html', source]] // single file uri and not inside recursion -> assume this is 'index.html'
+      ? [[DEFAULT_FILENAME, source]] // single file uri and not inside recursion -> assume this is 'index.html'
       : [[basename(source), source]] // if inside recursion or file is not .html -> just get name from file uri
   }
 
   // single string or buffer
   if (isString(source) || isBuffer(source)) {
     // just assume it is 'index.html', as most useful and common case
-    return [['index.html', source]]
+    return [[DEFAULT_FILENAME, source]]
   }
 
   // if single stream
@@ -47,11 +49,11 @@ export const toTuples = (source: Source, recursive = false): TupleSource[] => {
       // https://nodejs.org/api/fs.html#fs_readstream_path
       const name = basename(String(source.path))
       return !recursive && extname(name) === '.html'
-        ? [['index.html', source]] // single file stream and not inside recursion -> assume this is 'index.html'
+        ? [[DEFAULT_FILENAME, source]] // single file stream and not inside recursion -> assume this is 'index.html'
         : [[name, source]] // if inside recursion or file is not .html -> just get name from file uri
     } else {
       // some strange, not file stream -> just assume it is 'index.html'
-      return [['index.html', source]]
+      return [[DEFAULT_FILENAME, source]]
     }
   }
 
