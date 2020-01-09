@@ -61,7 +61,8 @@ app.get('/pdf', function(req, res) {
 })
 ```
 
-You can define any source like `string`, `Buffer`, [file link](https://en.wikipedia.org/wiki/File_URI_scheme), `stream.Readable`, or `URL` (for url conversions).
+You can define any source like `string`, `Buffer`, [file link](https://en.wikipedia.org/wiki/File_URI_scheme), `stream.Readable`, or `URL` (for url conversions).<br>
+Detailed sources format you can find [here](https://github.com/yumauri/gotenberg-js-client/wiki/Source).
 
 ## Header, footer and assets
 
@@ -96,7 +97,8 @@ const pdf = await toPDF([
 ])
 ```
 
-Instead of array you can use any [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols), like `Map`, `Set`, `arguments`, iterator from generator function, or any object with `[Symbol.iterator]` defined.
+Instead of array you can use any [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols), like `Map`, `Set`, `arguments`, iterator from generator function, or any object with `[Symbol.iterator]` defined.<br>
+Detailed sources format you can find [here](https://github.com/yumauri/gotenberg-js-client/wiki/Source).
 
 ## Paper size, margins, orientation
 
