@@ -69,7 +69,7 @@ function validateSources(
 
   if (type === RequestType.Office && hasDefault) {
     throw new Error(
-      `Default filename "${DEFAULT_FILENAME}" is not allowed for Office convertion, ` +
+      `Default filename "${DEFAULT_FILENAME}" is not allowed for Office conversion, ` +
         `looks like you didn't set filename for document`
     )
   }
