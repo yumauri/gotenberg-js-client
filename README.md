@@ -191,6 +191,14 @@ set(range('1-1'))
 //...
 ```
 
+or scale, using `set(scale)` (works with HTML, Markdown and URL conversions):
+
+```typescript
+//...
+set(scale(0.75))
+//...
+```
+
 ## Markdown
 
 ```typescript

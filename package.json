@@ -30,6 +30,16 @@
         {
           "minNodeVersion": "10"
         }
+      ],
+      [
+        "pika-plugin-package.json",
+        {
+          "+author": "^",
+          "*files": [
+            "-bin/"
+          ],
+          "-devDependencies": {}
+        }
       ]
     ]
   },
@@ -42,23 +52,24 @@
   },
   "homepage": "https://github.com/yumauri/gotenberg-js-client#readme",
   "dependencies": {
-    "@types/node": "^10.9.0",
     "form-data": "^3.0.0"
   },
   "devDependencies": {
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-node": "^0.8.1",
     "@pika/plugin-ts-standard-pkg": "^0.8.1",
-    "@types/jest": "^24.0.23",
-    "jest": "^24.9.0",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^10.9.0",
+    "jest": "^25.1.0",
+    "pika-plugin-package.json": "^1.0.2",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
-    "ts-node": "^8.5.4",
-    "tslint": "^5.20.1",
+    "ts-jest": "^25.2.0",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-security": "^1.16.0",
     "tslint-config-standard-plus": "^2.3.0",
-    "typescript": "^3.7.3",
+    "typescript": "^3.7.5",
     "yaspeller": "^6.0.2"
   },
   "engines": {
