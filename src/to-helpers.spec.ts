@@ -22,8 +22,8 @@ import {
   LARGE_MARGINS,
   LEGAL,
   LETTER,
-  NO_MARGINS,
   NORMAL_MARGINS,
+  NO_MARGINS,
   TABLOID,
 } from './page'
 
