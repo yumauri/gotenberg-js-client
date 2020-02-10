@@ -51,6 +51,9 @@ export type HtmlRequestFields = {
 
   // https://thecodingmachine.github.io/gotenberg/#html.page_ranges
   pageRanges?: string
+
+  // https://thecodingmachine.github.io/gotenberg/#html.paper_size_margins_orientation_scaling
+  scale?: number
 }
 
 // markdown conversion form fields
@@ -75,6 +78,9 @@ export type OfficeRequestFields = {
 // https://thecodingmachine.github.io/gotenberg/#url
 export type UrlRequestFields = {
   remoteURL?: string
+
+  // https://thecodingmachine.github.io/gotenberg/#html.paper_size_margins_orientation_scaling
+  scale?: number
 }
 
 // merge conversion doesn't have any form fields

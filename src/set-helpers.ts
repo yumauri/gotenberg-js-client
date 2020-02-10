@@ -64,3 +64,12 @@ export const googleChromeRpccBufferSize = (
 export const range = (range: string): FieldsModifier => (
   fields: RequestFields
 ) => (fields.pageRanges = range)
+
+/**
+ * Modifies `scale` form field
+ *
+ * https://thecodingmachine.github.io/gotenberg/#html.paper_size_margins_orientation_scaling
+ */
+export const scale = (scale: number): FieldsModifier => (
+  fields: RequestFields
+) => (fields.scale = scale)

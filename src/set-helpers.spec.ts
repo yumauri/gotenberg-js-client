@@ -3,6 +3,7 @@ import {
   filename,
   googleChromeRpccBufferSize,
   range,
+  scale,
   timeout,
   webhook,
 } from './set-helpers'
@@ -43,4 +44,10 @@ test('Test `range` function', () => {
   const object = {}
   range('1-1')(object)
   expect(object).toEqual({ pageRanges: '1-1' })
+})
+
+test('Test `scale` function', () => {
+  const object = {}
+  scale(0.75)(object)
+  expect(object).toEqual({ scale: 0.75 })
 })
