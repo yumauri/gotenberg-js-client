@@ -4640,6 +4640,11 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
+pika-plugin-package.json@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pika-plugin-package.json/-/pika-plugin-package.json-1.0.2.tgz#f141e09b12dc5c31b833dbb2692d65d4a541131f"
+  integrity sha512-U9NfAfSsRQHJId3dFk9iNjbkQuD781Y2uHxUAUCpuHGRTQJ2P5VqkRcnOqnrzkAj/z/KFaSQu2Qfa6jdqAtXng==
+
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
