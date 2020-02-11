@@ -1,23 +1,15 @@
-import {
-  GotenbergClient,
-  GotenbergClientClass,
-  GotenbergClientFunction,
-} from './client'
+import { GotenbergClient, GotenbergClientClass, GotenbergClientFunction } from './client'
 import { client as native } from './client/native'
 import { Request, RequestType, Source } from './_types'
 
 /**
  * Initializes Gotenberg request
  */
-export function gotenberg(
+export const gotenberg = (
   url: string | Buffer | URL,
-  client?:
-    | GotenbergClient
-    | GotenbergClientFunction
-    | GotenbergClientClass
-    | object,
+  client?: GotenbergClient | GotenbergClientFunction | GotenbergClientClass | object,
   config?: object
-) {
+) => {
   let clnt: GotenbergClient
 
   // if GotenbergClient object / instance provided -> just use it

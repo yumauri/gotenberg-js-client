@@ -7,9 +7,7 @@ import { GotenbergClientFunction } from './'
  * Little helper to parse url and get needed request method - either HTTP or HTTPS
  * @param url
  */
-const parse = (
-  url: string
-): [URL, typeof http.request | typeof https.request] => {
+const parse = (url: string): [URL, typeof http.request | typeof https.request] => {
   const _url = new URL(url)
   const request = _url.protocol === 'http:' ? http.request : https.request
   return [_url, request]
@@ -44,8 +42,7 @@ export function post(
         res.on('data', (chunk: Buffer) => chunks.push(chunk))
         res.on('end', () => {
           try {
-            error +=
-              ' (' + JSON.parse(Buffer.concat(chunks).toString()).message + ')'
+            error += ' (' + JSON.parse(Buffer.concat(chunks).toString()).message + ')'
           } catch (err) {
             // ignore
           }
@@ -62,10 +59,7 @@ export function post(
 /**
  * Perform POST request to Gotenberg API
  */
-export function get(
-  this: object | null,
-  url: string
-): Promise<NodeJS.ReadableStream> {
+export function get(this: object | null, url: string): Promise<NodeJS.ReadableStream> {
   const [_url, request] = parse(url)
   return new Promise((resolve, reject) => {
     const req = request(_url, {

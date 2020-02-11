@@ -1,11 +1,5 @@
 import FormData from 'form-data'
-import {
-  PingRequest,
-  RequestFields,
-  RequestType,
-  TupleStreamsSource,
-  TypedRequest,
-} from './_types'
+import { PingRequest, RequestFields, RequestType, TupleStreamsSource, TypedRequest } from './_types'
 import { DEFAULT_FILENAME, toStreams } from './_source-converters'
 
 /**
@@ -37,29 +31,22 @@ const formdata = (fields: RequestFields, files: TupleStreamsSource[]) => {
 /**
  * Validate sources' file names
  */
-function validateSources(
+const validateSources = (
   type: RequestType,
   sources: TupleStreamsSource[]
-): TupleStreamsSource[] {
+): TupleStreamsSource[] => {
   const filenames = sources.map(source => source[0])
 
   // check for duplicates
-  const duplicates = filenames.filter(
-    (name, index, arr) => arr.indexOf(name) !== index
-  )
+  const duplicates = filenames.filter((name, index, arr) => arr.indexOf(name) !== index)
   if (duplicates.length > 0) {
-    throw new Error(
-      `There are duplicates in file names: ${duplicates.join(',')}`
-    )
+    throw new Error(`There are duplicates in file names: ${duplicates.join(',')}`)
   }
 
   // check sources against request type
 
   const hasDefault = filenames.includes(DEFAULT_FILENAME)
-  if (
-    (type === RequestType.Html || type === RequestType.Markdown) &&
-    !hasDefault
-  ) {
+  if ((type === RequestType.Html || type === RequestType.Markdown) && !hasDefault) {
     throw new Error(
       `File "${DEFAULT_FILENAME}" is required for ${
         type === RequestType.Html ? 'HTML' : 'Markdown'
@@ -81,14 +68,11 @@ function validateSources(
  * Send actual request to Gotenberg
  * @return ReadableStream
  */
-export function please<T extends TypedRequest>(
-  request: T
-): T extends PingRequest ? Promise<void> : Promise<NodeJS.ReadableStream>
-
-// implementation
-export function please(
-  request: TypedRequest
-): Promise<NodeJS.ReadableStream | void> {
+export const please: {
+  <T extends TypedRequest>(request: T): T extends PingRequest
+    ? Promise<void>
+    : Promise<NodeJS.ReadableStream>
+} = (request): any => {
   // ping request
   // https://thecodingmachine.github.io/gotenberg/#ping
   if (request.type === RequestType.Ping) {

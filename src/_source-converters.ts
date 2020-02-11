@@ -1,13 +1,7 @@
 import { basename, extname } from 'path'
 import { createReadStream, ReadStream } from 'fs'
 import { Readable } from 'stream'
-import {
-  FileURI,
-  PlainSource,
-  Source,
-  TupleSource,
-  TupleStreamsSource,
-} from './_types'
+import { FileURI, PlainSource, Source, TupleSource, TupleStreamsSource } from './_types'
 import {
   isBuffer,
   isFileName,

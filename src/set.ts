@@ -5,9 +5,11 @@ import { fields } from './_fields'
  * Adjust Request fields, for any request
  * @return new typed Request, doesn't modify original Request
  */
-export function set<RequestEx extends Request>(
-  ...opts: Array<Partial<RequestFields> | FieldsModifier>
-) {
+export const set: {
+  <RequestEx extends Request>(...opts: (Partial<RequestFields> | FieldsModifier)[]): (
+    request: RequestEx
+  ) => RequestEx
+} = (...opts) => {
   const options: RequestFields = {}
 
   // check every given option
@@ -20,5 +22,5 @@ export function set<RequestEx extends Request>(
     }
   }
 
-  return fields<RequestEx>(options)
+  return fields(options)
 }

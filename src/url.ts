@@ -1,4 +1,4 @@
-import { Request, RequestType } from './_types'
+import { Request, RequestType, UrlRequest } from './_types'
 import { isString, isURL } from './_source-checkers'
 import { pipe } from './_pipe'
 import { fields } from './_fields'
@@ -9,7 +9,9 @@ import { type } from './_type'
  * Adjust Request url, by adding `/url` to it; Set `remoteURL` from source
  * @return new HtmlRequest, doesn't modify original Request
  */
-export function url(request: Request) {
+export const url: {
+  (request: Request): UrlRequest
+} = request => {
   let remoteURL: string
   if (isString(request.source)) remoteURL = request.source
   else if (isURL(request.source)) remoteURL = request.source.toString()

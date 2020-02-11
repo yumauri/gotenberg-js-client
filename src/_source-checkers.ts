@@ -1,17 +1,10 @@
 import { Readable } from 'stream'
-import {
-  FileURI,
-  ObjectSource,
-  PlainSource,
-  Source,
-  TupleSource,
-} from './_types'
+import { FileURI, ObjectSource, PlainSource, Source, TupleSource } from './_types'
 
 /**
  * Check if argument is String
  */
-export const isString = (x: Source | undefined | null): x is string =>
-  typeof x === 'string'
+export const isString = (x: Source | undefined | null): x is string => typeof x === 'string'
 
 /**
  * Check if argument is Buffer
@@ -22,15 +15,13 @@ export const isBuffer = (x: Source | undefined | null): x is Buffer =>
 /**
  * Check if argument is Stream
  */
-export const isStream = (
-  x: Source | undefined | null
-): x is NodeJS.ReadableStream => x != null && x instanceof Readable
+export const isStream = (x: Source | undefined | null): x is NodeJS.ReadableStream =>
+  x != null && x instanceof Readable
 
 /**
  * Check if argument is URL
  */
-export const isURL = (x: Source | undefined | null): x is URL =>
-  x != null && x instanceof URL
+export const isURL = (x: Source | undefined | null): x is URL => x != null && x instanceof URL
 
 /**
  * Check if argument is uri to local file
@@ -49,10 +40,7 @@ export const isPlain = (x: Source | undefined | null): x is PlainSource =>
  * Check if argument is TupleSource - two-values array, like [key, PlainSource]
  */
 export const isTuple = (x: object | undefined | null): x is TupleSource =>
-  Array.isArray(x) &&
-  x.length === 2 &&
-  typeof x[0] === 'string' &&
-  isPlain(x[1])
+  Array.isArray(x) && x.length === 2 && typeof x[0] === 'string' && isPlain(x[1])
 
 /**
  * Check if argument is ObjectSource, with PlainSources inside

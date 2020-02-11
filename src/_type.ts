@@ -13,23 +13,14 @@ import {
  * Adjust Request fields, by changing `type`
  * @return new typed Request, doesn't modify original Request
  */
-export function type(type: RequestType.Url): (request: Request) => UrlRequest
-export function type(type: RequestType.Ping): (request: Request) => PingRequest
-export function type(type: RequestType.Html): (request: Request) => HtmlRequest
-export function type(
-  type: RequestType.Merge
-): (request: Request) => MergeRequest
-export function type(
-  type: RequestType.Office
-): (request: Request) => OfficeRequest
-export function type(
-  type: RequestType.Markdown
-): (request: Request) => MarkdownRequest
-
-// implementation
-export function type(type: RequestType) {
-  return (request: Request): Request => ({
-    ...request,
-    type,
-  })
-}
+export const type: {
+  (type: RequestType.Url): (request: Request) => UrlRequest
+  (type: RequestType.Ping): (request: Request) => PingRequest
+  (type: RequestType.Html): (request: Request) => HtmlRequest
+  (type: RequestType.Merge): (request: Request) => MergeRequest
+  (type: RequestType.Office): (request: Request) => OfficeRequest
+  (type: RequestType.Markdown): (request: Request) => MarkdownRequest
+} = (type: RequestType) => (request: Request): any => ({
+  ...request,
+  type,
+})

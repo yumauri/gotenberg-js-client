@@ -101,9 +101,7 @@ export type RequestFields = CommonRequestFields &
 ////////////////////////////////////////////////////////////////////////////////
 
 export type FieldsModifier = (fields: RequestFields) => void
-export type PaperOptions =
-  | [number, number]
-  | { width?: number; height?: number }
+export type PaperOptions = [number, number] | { width?: number; height?: number }
 export type MarginOptions =
   | [number, number, number, number]
   | { top?: number; right?: number; bottom?: number; left?: number }

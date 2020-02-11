@@ -5,9 +5,9 @@ import { headers } from './_headers'
  * Adjust Request headers, for any request
  * @return new typed Request, doesn't modify original Request
  */
-export function add<RequestEx extends Request>(
-  ...opts: Array<HeadersModifier>
-) {
+export const add: {
+  <RequestEx extends Request>(...opts: HeadersModifier[]): (request: RequestEx) => RequestEx
+} = (...opts) => {
   const httpHeaders: HttpHeaders = {}
 
   // check every given option
@@ -16,5 +16,5 @@ export function add<RequestEx extends Request>(
     op(httpHeaders)
   }
 
-  return headers<RequestEx>(httpHeaders)
+  return headers(httpHeaders)
 }

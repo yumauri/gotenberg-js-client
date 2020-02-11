@@ -1,9 +1,4 @@
-import {
-  FieldsModifier,
-  MarginOptions,
-  PaperOptions,
-  RequestFields,
-} from './_types'
+import { FieldsModifier, MarginOptions, PaperOptions, RequestFields } from './_types'
 import {
   A3,
   A4,
@@ -25,19 +20,17 @@ const noop: FieldsModifier = () => undefined
 /**
  * Modifies `landscape` form field to be true
  */
-export const landscape: FieldsModifier = (fields: RequestFields) =>
-  (fields.landscape = true)
+export const landscape: FieldsModifier = (fields: RequestFields) => (fields.landscape = true)
 
 /**
  * Modifies `landscape` form field to be undefined (~ false)
  */
-export const portrait: FieldsModifier = (fields: RequestFields) =>
-  (fields.landscape = undefined) // == portrait is default orientation
+export const portrait: FieldsModifier = (fields: RequestFields) => (fields.landscape = undefined) // == portrait is default orientation
 
 /**
  * Modifies paper size
  */
-export function paperSize(paper?: PaperOptions): FieldsModifier {
+export const paperSize = (paper?: PaperOptions): FieldsModifier => {
   if (!paper) return noop
   return (fields: RequestFields) => {
     if (Array.isArray(paper)) {
@@ -60,16 +53,11 @@ export const tabloid = paperSize(TABLOID)
 /**
  * Modifies margins
  */
-export function marginSizes(margins?: MarginOptions): FieldsModifier {
+export const marginSizes = (margins?: MarginOptions): FieldsModifier => {
   if (!margins) return noop
   return (fields: RequestFields) => {
     if (Array.isArray(margins)) {
-      ;[
-        fields.marginTop,
-        fields.marginRight,
-        fields.marginBottom,
-        fields.marginLeft,
-      ] = margins
+      ;[fields.marginTop, fields.marginRight, fields.marginBottom, fields.marginLeft] = margins
     } else {
       ;({
         top: fields.marginTop,

@@ -1,29 +1,17 @@
-import {
-  ChromeRequestFields,
-  HtmlRequest,
-  Request,
-  RequestType,
-} from './_types'
+import { ChromeRequestFields, HtmlRequest, Request, RequestType } from './_types'
 import { pipe } from './_pipe'
 import { fields } from './_fields'
 import { path } from './_path'
 import { type } from './_type'
 
 /**
- * Adjust Request url, by adding `/html` to it; Add request parameters
+ * Adjust Request url, by adding `/html` to it; Can add request parameters
  * @return new HtmlRequest, doesn't modify original Request
  */
-export function html(o: ChromeRequestFields): (r: Request) => HtmlRequest
-
-/**
- * Adjust Request url, by adding `/html` to it
- * @return new HtmlRequest, doesn't modify original Request
- */
-export function html(r: Request): HtmlRequest
-
-// implementation
-export function html(x: Request | ChromeRequestFields) {
-  return 'type' in x
+export const html: {
+  (o: ChromeRequestFields): (r: Request) => HtmlRequest
+  (r: Request): HtmlRequest
+} = (x: Request | ChromeRequestFields): any =>
+  'type' in x
     ? pipe(path('/html'), type(RequestType.Html))(x)
     : pipe(fields(x), path('/html'), type(RequestType.Html))
-}
