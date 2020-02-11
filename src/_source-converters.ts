@@ -1,7 +1,7 @@
 import { basename, extname } from 'path'
 import { createReadStream, ReadStream } from 'fs'
 import { Readable } from 'stream'
-import { FileURI, PlainSource, Source, TupleSource, TupleStreamsSource } from './_types'
+import { FileURI, PlainSource, Source, TupleFormSource, TupleSource } from './_types'
 import {
   isBuffer,
   isFileName,
@@ -111,12 +111,12 @@ export const toStream = (source: PlainSource): NodeJS.ReadableStream =>
       })
 
 /**
- * Convert any possible source to tuples array with streams only
+ * Convert any possible source to tuples array with streams (or blobs) only
  */
-export const toStreams = (source?: Source): TupleStreamsSource[] => {
+export const toFormSources = (source?: Source): TupleFormSource[] => {
   if (!source) return []
   const tuples = toTuples(source)
-  const ret: TupleStreamsSource[] = []
+  const ret: TupleFormSource[] = []
   for (let i = 0; i < tuples.length; i++) {
     ret.push([tuples[i][0], toStream(tuples[i][1])])
   }

@@ -1,3 +1,4 @@
+import isNode from 'detect-node'
 import { Readable } from 'stream'
 import { FileURI, ObjectSource, PlainSource, Source, TupleSource } from './_types'
 
@@ -10,13 +11,25 @@ export const isString = (x: Source | undefined | null): x is string => typeof x 
  * Check if argument is Buffer
  */
 export const isBuffer = (x: Source | undefined | null): x is Buffer =>
-  x != null && x instanceof Buffer
+  x != null && isNode && typeof Buffer !== 'undefined' && x instanceof Buffer // tslint:disable-line strict-type-predicates
+
+/**
+ * Check if argument is Blob
+ */
+export const isBlob = (x: Source | undefined | null): x is Blob =>
+  x != null && !isNode && typeof Blob !== 'undefined' && x instanceof Blob // tslint:disable-line strict-type-predicates
+
+/**
+ * Check if argument is File
+ */
+export const isFile = (x: Source | undefined | null): x is File =>
+  x != null && !isNode && typeof File !== 'undefined' && x instanceof File // tslint:disable-line strict-type-predicates
 
 /**
  * Check if argument is Stream
  */
 export const isStream = (x: Source | undefined | null): x is NodeJS.ReadableStream =>
-  x != null && x instanceof Readable
+  x != null && isNode && x instanceof Readable
 
 /**
  * Check if argument is URL
@@ -34,7 +47,7 @@ export const isFileUri = (x: Source | undefined | null): x is FileURI =>
  * Check if argument is PlainSource - either String, Stream or Buffer
  */
 export const isPlain = (x: Source | undefined | null): x is PlainSource =>
-  isString(x) || isStream(x) || isBuffer(x) // || isFileUri(x) <- redundant check
+  isString(x) || isStream(x) || isBuffer(x) || isBlob(x) // || isFileUri(x) || isFile(x) <- redundant checks
 
 /**
  * Check if argument is TupleSource - two-values array, like [key, PlainSource]

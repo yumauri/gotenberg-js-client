@@ -63,6 +63,7 @@
   },
   "homepage": "https://github.com/yumauri/gotenberg-js-client#readme",
   "dependencies": {
+    "detect-node": "^2.0.4",
     "form-data": "^3.0.0"
   },
   "devDependencies": {
@@ -70,6 +71,7 @@
     "@pika/plugin-build-node": "^0.8.1",
     "@pika/plugin-ts-standard-pkg": "^0.8.1",
     "@size-limit/preset-small-lib": "^4.0.1",
+    "@types/detect-node": "^2.0.0",
     "@types/jest": "^25.1.2",
     "@types/node": "^10.9.0",
     "flowgen": "^1.10.0",

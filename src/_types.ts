@@ -120,7 +120,7 @@ export type ConversionOptions =
 ////////////////////////////////////////////////////////////////////////////////
 
 export type FileURI = string // TODO: https://github.com/microsoft/TypeScript/issues/6579
-export type PlainSource = string | Buffer | FileURI | NodeJS.ReadableStream
+export type PlainSource = string | Buffer | FileURI | NodeJS.ReadableStream | Blob | File
 export type TupleSource = [string, PlainSource]
 export type ObjectSource = { [name: string]: PlainSource }
 export type Source =
@@ -130,7 +130,7 @@ export type Source =
   | ObjectSource
   | Array<PlainSource | TupleSource | ObjectSource>
   | Iterable<PlainSource | TupleSource | ObjectSource>
-export type TupleStreamsSource = [string, NodeJS.ReadableStream]
+export type TupleFormSource = [string, NodeJS.ReadableStream | Blob | File]
 
 ////////////////////////////////////////////////////////////////////////////////
 /// request headers ////////////////////////////////////////////////////////////

@@ -1,6 +1,8 @@
 import { Readable } from 'stream'
 import {
+  isBlob,
   isBuffer,
+  isFile,
   isFileName,
   isFileUri,
   isIterable,
@@ -25,6 +27,21 @@ const buffer = Buffer.from('test')
 const generator = function* gen() {} // tslint:disable-line no-empty
 const iterator = { [Symbol.iterator]: generator }
 
+test('Test `isBlob` function', function() {
+  expect(isBlob(undefined)).toBe(false)
+  expect(isBlob(null)).toBe(false)
+  expect(isBlob(string)).toBe(false)
+  expect(isBlob(url)).toBe(false)
+  expect(isBlob(array)).toBe(false)
+  expect(isBlob(map)).toBe(false)
+  expect(isBlob(set)).toBe(false)
+  expect(isBlob(arguments)).toBe(false)
+  expect(isBlob(object)).toBe(false)
+  expect(isBlob(buffer)).toBe(false)
+  expect(isBlob(generator())).toBe(false)
+  expect(isBlob(iterator)).toBe(false)
+})
+
 test('Test `isBuffer` function', function() {
   expect(isBuffer(undefined)).toBe(false)
   expect(isBuffer(null)).toBe(false)
@@ -38,6 +55,21 @@ test('Test `isBuffer` function', function() {
   expect(isBuffer(buffer)).toBe(true) // <-
   expect(isBuffer(generator())).toBe(false)
   expect(isBuffer(iterator)).toBe(false)
+})
+
+test('Test `isFile` function', function() {
+  expect(isFile(undefined)).toBe(false)
+  expect(isFile(null)).toBe(false)
+  expect(isFile(string)).toBe(false)
+  expect(isFile(url)).toBe(false)
+  expect(isFile(array)).toBe(false)
+  expect(isFile(map)).toBe(false)
+  expect(isFile(set)).toBe(false)
+  expect(isFile(arguments)).toBe(false)
+  expect(isFile(object)).toBe(false)
+  expect(isFile(buffer)).toBe(false)
+  expect(isFile(generator())).toBe(false)
+  expect(isFile(iterator)).toBe(false)
 })
 
 test('Test `isFileName` function', function() {

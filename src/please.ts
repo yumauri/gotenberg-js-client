@@ -1,12 +1,12 @@
 import FormData from 'form-data'
-import { PingRequest, RequestFields, RequestType, TupleStreamsSource, TypedRequest } from './_types'
-import { DEFAULT_FILENAME, toStreams } from './_source-converters'
+import { PingRequest, RequestFields, RequestType, TupleFormSource, TypedRequest } from './_types'
+import { DEFAULT_FILENAME, toFormSources } from './_source-converters'
 
 /**
  * Helper function to convert fields and files to form data
  * https://github.com/form-data/form-data
  */
-const formdata = (fields: RequestFields, files: TupleStreamsSource[]) => {
+const formdata = (fields: RequestFields, files: TupleFormSource[]) => {
   const data = new FormData()
 
   // append all form values
@@ -31,10 +31,7 @@ const formdata = (fields: RequestFields, files: TupleStreamsSource[]) => {
 /**
  * Validate sources' file names
  */
-const validateSources = (
-  type: RequestType,
-  sources: TupleStreamsSource[]
-): TupleStreamsSource[] => {
+const validateSources = (type: RequestType, sources: TupleFormSource[]): TupleFormSource[] => {
   const filenames = sources.map(source => source[0])
 
   // check for duplicates
@@ -91,7 +88,7 @@ export const please: {
   }
 
   // any other conversion request
-  const sources = validateSources(request.type, toStreams(request.source))
+  const sources = validateSources(request.type, toFormSources(request.source))
   const form = formdata(request.fields, sources)
   return request.client.post(request.url, form, request.headers)
 }
