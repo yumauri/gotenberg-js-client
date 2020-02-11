@@ -13,13 +13,21 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "jest --config jestconfig.json",
-    "build": "pika build",
+    "build": "rm -rf pkg/ && pika build",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json && yarn spell",
     "spell": "yaspeller .",
     "release": "pika publish",
-    "version": "yarn build"
+    "version": "yarn build",
+    "size": "size-limit"
   },
+  "size-limit": [
+    {
+      "path": "pkg/dist-node/index.js",
+      "webpack": false,
+      "limit": "3965 B"
+    }
+  ],
   "@pika/pack": {
     "pipeline": [
       [
@@ -58,11 +66,13 @@
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-node": "^0.8.1",
     "@pika/plugin-ts-standard-pkg": "^0.8.1",
+    "@size-limit/preset-small-lib": "^4.0.1",
     "@types/jest": "^25.1.2",
     "@types/node": "^10.9.0",
     "jest": "^25.1.0",
     "pika-plugin-package.json": "^1.0.2",
     "prettier": "^1.19.1",
+    "size-limit": "^4.0.1",
     "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
