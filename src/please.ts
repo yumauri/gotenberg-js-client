@@ -69,10 +69,9 @@ const validateSources = (
  * @return ReadableStream
  */
 export const please: {
-  <T extends TypedRequest>(request: T): T extends PingRequest
-    ? Promise<void>
-    : Promise<NodeJS.ReadableStream>
-} = (request): any => {
+  <T extends PingRequest>(request: T): Promise<void>
+  <T extends TypedRequest>(request: T): Promise<NodeJS.ReadableStream>
+} = (request: TypedRequest): any => {
   // ping request
   // https://thecodingmachine.github.io/gotenberg/#ping
   if (request.type === RequestType.Ping) {

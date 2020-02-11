@@ -34,6 +34,9 @@
         "@pika/plugin-ts-standard-pkg"
       ],
       [
+        "pika-plugin-typedefs-to-flow"
+      ],
+      [
         "@pika/plugin-build-node",
         {
           "minNodeVersion": "10"
@@ -69,8 +72,10 @@
     "@size-limit/preset-small-lib": "^4.0.1",
     "@types/jest": "^25.1.2",
     "@types/node": "^10.9.0",
+    "flowgen": "^1.10.0",
     "jest": "^25.1.0",
     "pika-plugin-package.json": "^1.0.2",
+    "pika-plugin-typedefs-to-flow": "^0.0.2",
     "prettier": "^1.19.1",
     "size-limit": "^4.0.1",
     "ts-jest": "^25.2.0",
