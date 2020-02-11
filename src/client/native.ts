@@ -94,10 +94,7 @@ export function get(
  * for http -> https://nodejs.org/docs/latest-v10.x/api/http.html#http_http_request_options_callback
  * for https -> https://nodejs.org/docs/latest-v10.x/api/https.html#https_https_request_options_callback
  */
-const client: GotenbergClientFunction = (config?: object) => ({
+export const client: GotenbergClientFunction = (config?: object) => ({
   post: post.bind(config || null),
   get: get.bind(config || null),
 })
-
-// some trick to export typed value
-export default client

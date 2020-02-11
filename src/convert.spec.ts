@@ -1,5 +1,5 @@
 import { Request } from './_types'
-import convert from './convert'
+import { convert } from './convert'
 
 // dumb object to test purity
 const dumb = { url: 'test', fields: {} }

@@ -1,11 +1,11 @@
 import { FieldsModifier, Request, RequestFields } from './_types'
-import fields from './_fields'
+import { fields } from './_fields'
 
 /**
  * Adjust Request fields, for any request
  * @return new typed Request, doesn't modify original Request
  */
-function set<RequestEx extends Request>(
+export function set<RequestEx extends Request>(
   ...opts: Array<Partial<RequestFields> | FieldsModifier>
 ) {
   const options: RequestFields = {}
@@ -22,5 +22,3 @@ function set<RequestEx extends Request>(
 
   return fields<RequestEx>(options)
 }
-
-export default set

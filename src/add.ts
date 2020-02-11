@@ -1,11 +1,13 @@
 import { HeadersModifier, HttpHeaders, Request } from './_types'
-import headers from './_headers'
+import { headers } from './_headers'
 
 /**
  * Adjust Request headers, for any request
  * @return new typed Request, doesn't modify original Request
  */
-function add<RequestEx extends Request>(...opts: Array<HeadersModifier>) {
+export function add<RequestEx extends Request>(
+  ...opts: Array<HeadersModifier>
+) {
   const httpHeaders: HttpHeaders = {}
 
   // check every given option
@@ -16,5 +18,3 @@ function add<RequestEx extends Request>(...opts: Array<HeadersModifier>) {
 
   return headers<RequestEx>(httpHeaders)
 }
-
-export default add

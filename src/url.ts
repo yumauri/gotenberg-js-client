@@ -1,15 +1,15 @@
 import { Request, RequestType } from './_types'
 import { isString, isURL } from './_source-checkers'
-import pipe from './_pipe'
-import fields from './_fields'
-import path from './_path'
-import type from './_type'
+import { pipe } from './_pipe'
+import { fields } from './_fields'
+import { path } from './_path'
+import { type } from './_type'
 
 /**
  * Adjust Request url, by adding `/url` to it; Set `remoteURL` from source
  * @return new HtmlRequest, doesn't modify original Request
  */
-function url(request: Request) {
+export function url(request: Request) {
   let remoteURL: string
   if (isString(request.source)) remoteURL = request.source
   else if (isURL(request.source)) remoteURL = request.source.toString()
@@ -37,5 +37,3 @@ function url(request: Request) {
     source: undefined, // eliminate source from Request
   })
 }
-
-export default url

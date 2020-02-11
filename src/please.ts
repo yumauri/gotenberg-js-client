@@ -81,12 +81,14 @@ function validateSources(
  * Send actual request to Gotenberg
  * @return ReadableStream
  */
-function please<T extends TypedRequest>(
+export function please<T extends TypedRequest>(
   request: T
 ): T extends PingRequest ? Promise<void> : Promise<NodeJS.ReadableStream>
 
 // implementation
-function please(request: TypedRequest): Promise<NodeJS.ReadableStream | void> {
+export function please(
+  request: TypedRequest
+): Promise<NodeJS.ReadableStream | void> {
   // ping request
   // https://thecodingmachine.github.io/gotenberg/#ping
   if (request.type === RequestType.Ping) {
@@ -110,5 +112,3 @@ function please(request: TypedRequest): Promise<NodeJS.ReadableStream | void> {
   const form = formdata(request.fields, sources)
   return request.client.post(request.url, form, request.headers)
 }
-
-export default please

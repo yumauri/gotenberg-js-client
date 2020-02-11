@@ -1,27 +1,28 @@
 // export main entry and finish functions
-export { default as gotenberg } from './gotenberg'
-export { default as please } from './please'
+export { gotenberg } from './gotenberg'
+export { please } from './please'
 
 // export conversion functions
-export { default as markdown } from './markdown'
-export { default as convert } from './convert'
-export { default as office } from './office'
-export { default as merge } from './merge'
-export { default as ping } from './ping'
-export { default as html } from './html'
-export { default as url } from './url'
+export { markdown } from './markdown'
+export { convert } from './convert'
+export { office } from './office'
+export { merge } from './merge'
+export { ping } from './ping'
+export { html } from './html'
+export { url } from './url'
 
 // export modifiers functions and constants
-export { default as add } from './add'
-export { default as set } from './set'
-export { default as to } from './to'
+export { add } from './add'
+export { set } from './set'
+export { to } from './to'
 export * from './add-helpers'
 export * from './set-helpers'
 export * from './to-helpers'
 export * from './page'
 
 // export pipe helper
-export { default as pipe } from './_pipe'
+export { pipe } from './_pipe'
 
 // export types
 export * from './_types'
+export * from './client'

@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import url from './url'
+import { url } from './url'
 
 // dumb object to test purity
 const dumb: Request = {

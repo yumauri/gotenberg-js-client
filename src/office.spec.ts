@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import office from './office'
+import { office } from './office'
 
 // dumb object to test purity
 const dumb = { type: RequestType.Undefined, url: 'test', fields: {} }

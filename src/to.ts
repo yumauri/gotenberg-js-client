@@ -8,23 +8,25 @@ import {
   Request,
   RequestFields,
 } from './_types'
-import fields from './_fields'
+import { fields } from './_fields'
 import { marginSizes, paperSize } from './to-helpers'
 
 /**
  * Adjust Request fields, for html, markdown or office requests
  * @return new Request (Html|Markdown|Office), doesn't modify original Request
  */
-function to(...opts: ConversionOptions[]): (request: HtmlRequest) => HtmlRequest
-function to(
+export function to(
+  ...opts: ConversionOptions[]
+): (request: HtmlRequest) => HtmlRequest
+export function to(
   ...opts: ConversionOptions[]
 ): (request: OfficeRequest) => OfficeRequest
-function to(
+export function to(
   ...opts: ConversionOptions[]
 ): (request: MarkdownRequest) => MarkdownRequest
 
 // implementation
-function to<RequestEx extends Request>(...opts: ConversionOptions[]) {
+export function to<RequestEx extends Request>(...opts: ConversionOptions[]) {
   const options: RequestFields = {}
 
   // page size and margins options
@@ -82,5 +84,3 @@ function to<RequestEx extends Request>(...opts: ConversionOptions[]) {
 
   return fields<RequestEx>(options)
 }
-
-export default to

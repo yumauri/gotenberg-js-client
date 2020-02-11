@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import add from './add'
+import { add } from './add'
 import { headers } from './add-helpers'
 
 // dumb object to test purity

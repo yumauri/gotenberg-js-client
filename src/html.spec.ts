@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import html from './html'
+import { html } from './html'
 
 // dumb object to test purity
 const dumb = { type: RequestType.Undefined, url: 'test', fields: {} }

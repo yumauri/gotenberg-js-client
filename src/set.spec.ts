@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import set from './set'
+import { set } from './set'
 import { delay, filename } from './set-helpers'
 
 // dumb object to test purity

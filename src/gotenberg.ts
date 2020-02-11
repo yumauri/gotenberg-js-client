@@ -3,13 +3,13 @@ import {
   GotenbergClientClass,
   GotenbergClientFunction,
 } from './client'
-import native from './client/native'
+import { client as native } from './client/native'
 import { Request, RequestType, Source } from './_types'
 
 /**
  * Initializes Gotenberg request
  */
-function gotenberg(
+export function gotenberg(
   url: string | Buffer | URL,
   client?:
     | GotenbergClient
@@ -53,5 +53,3 @@ function gotenberg(
     fields: {},
   })
 }
-
-export default gotenberg

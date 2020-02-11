@@ -1,5 +1,5 @@
 import { HtmlRequest, RequestType } from './_types'
-import to from './to'
+import { to } from './to'
 import { a4, landscape, noMargins } from './to-helpers'
 import { A4, NO_MARGINS } from './page'
 

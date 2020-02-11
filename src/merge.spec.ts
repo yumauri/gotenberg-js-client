@@ -1,5 +1,5 @@
 import { Request, RequestType } from './_types'
-import merge from './merge'
+import { merge } from './merge'
 
 // dumb object to test purity
 const dumb: Request = {

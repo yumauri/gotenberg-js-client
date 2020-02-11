@@ -1,5 +1,5 @@
 import { Request } from './_types'
-import headers from './_headers'
+import { headers } from './_headers'
 
 // dumb object to test purity
 const dumb = { url: 'test', headers: { Test: 'Test' } }
