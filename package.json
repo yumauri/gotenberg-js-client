@@ -14,7 +14,7 @@
     "dev": "ts-node src/index.ts",
     "test": "jest --config jestconfig.json",
     "build": "rm -rf pkg/ && pika build",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" --write \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json && yarn spell",
     "spell": "yaspeller .",
     "release": "pika publish",

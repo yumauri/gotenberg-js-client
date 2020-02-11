@@ -1,5 +1,5 @@
-import { Request } from './_types'
-import { path } from './_path'
+import { Request } from '../src'
+import { path } from '../src/_path'
 
 // dumb object to test purity
 const dumb = { url: 'test', fields: {} }

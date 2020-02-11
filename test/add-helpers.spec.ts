@@ -1,4 +1,4 @@
-import { header, headers, webhookHeader, webhookHeaders } from './add-helpers'
+import { header, headers, webhookHeader, webhookHeaders } from '../src'
 
 test('Test `header` function', () => {
   const object = {}

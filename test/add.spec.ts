@@ -1,6 +1,4 @@
-import { Request, RequestType } from './_types'
-import { add } from './add'
-import { headers } from './add-helpers'
+import { add, headers, Request, RequestType } from '../src'
 
 // dumb object to test purity
 const dumb: Request = {

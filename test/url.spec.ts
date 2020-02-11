@@ -1,5 +1,4 @@
-import { Request, RequestType } from './_types'
-import { url } from './url'
+import { Request, RequestType, url } from '../src'
 
 // dumb object to test purity
 const dumb: Request = {

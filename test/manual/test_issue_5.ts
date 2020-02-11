@@ -1,5 +1,5 @@
 import { createWriteStream, readFileSync } from 'fs'
-import { convert, gotenberg, office, pipe, please } from '../src'
+import { convert, gotenberg, office, pipe, please } from '../../src'
 
 // need to run Gotenberg like this
 // docker run --rm -p 3500:3000 thecodingmachine/gotenberg:6

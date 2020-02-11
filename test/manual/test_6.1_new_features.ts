@@ -1,15 +1,5 @@
 import { createWriteStream } from 'fs'
-import {
-  add,
-  convert,
-  gotenberg,
-  headers,
-  pipe,
-  please,
-  range,
-  set,
-  url,
-} from '../src'
+import { add, convert, gotenberg, headers, pipe, please, range, set, url } from '../../src'
 
 // need to run Gotenberg like this
 // docker run --rm -p 3500:3000 thecodingmachine/gotenberg:6

@@ -1,5 +1,4 @@
-import { Request, RequestType } from './_types'
-import { ping } from './ping'
+import { ping, Request, RequestType } from '../src'
 
 // dumb object to test purity
 const dumb = { type: RequestType.Undefined, url: 'test', fields: {} }

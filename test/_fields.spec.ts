@@ -1,5 +1,5 @@
-import { Request } from './_types'
-import { fields } from './_fields'
+import { Request } from '../src'
+import { fields } from '../src/_fields'
 
 // dumb object to test purity
 const dumb = { url: 'test', fields: { landscape: false } }

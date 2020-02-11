@@ -1,5 +1,4 @@
-import { Request, RequestType } from './_types'
-import { merge } from './merge'
+import { merge, Request, RequestType } from '../src'
 
 // dumb object to test purity
 const dumb: Request = {

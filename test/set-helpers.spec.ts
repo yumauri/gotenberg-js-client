@@ -1,12 +1,4 @@
-import {
-  delay,
-  filename,
-  googleChromeRpccBufferSize,
-  range,
-  scale,
-  timeout,
-  webhook,
-} from './set-helpers'
+import { delay, filename, googleChromeRpccBufferSize, range, scale, timeout, webhook } from '../src'
 
 test('Test `filename` function', () => {
   const object = {}

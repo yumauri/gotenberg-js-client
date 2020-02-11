@@ -1,5 +1,4 @@
-import { Request, RequestType } from './_types'
-import { markdown } from './markdown'
+import { markdown, Request, RequestType } from '../src'
 
 // dumb object to test purity
 const dumb = { type: RequestType.Undefined, url: 'test', fields: {} }

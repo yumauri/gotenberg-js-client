@@ -1,7 +1,4 @@
-import { HtmlRequest, RequestType } from './_types'
-import { to } from './to'
-import { a4, landscape, noMargins } from './to-helpers'
-import { A4, NO_MARGINS } from './page'
+import { a4, A4, HtmlRequest, landscape, noMargins, NO_MARGINS, RequestType, to } from '../src'
 
 // dumb object to test purity
 const dumb: HtmlRequest = {

@@ -1,31 +1,29 @@
 import {
   a3,
+  A3,
   a4,
+  A4,
   a5,
+  A5,
   a6,
+  A6,
   landscape,
   largeMargins,
+  LARGE_MARGINS,
   legal,
+  LEGAL,
   letter,
+  LETTER,
   marginSizes,
   noMargins,
   normalMargins,
+  NORMAL_MARGINS,
+  NO_MARGINS,
   paperSize,
   portrait,
   tabloid,
-} from './to-helpers'
-import {
-  A3,
-  A4,
-  A5,
-  A6,
-  LARGE_MARGINS,
-  LEGAL,
-  LETTER,
-  NORMAL_MARGINS,
-  NO_MARGINS,
   TABLOID,
-} from './page'
+} from '../src'
 
 test('Test `landscape` function', () => {
   const object = {}

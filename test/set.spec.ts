@@ -1,6 +1,4 @@
-import { Request, RequestType } from './_types'
-import { set } from './set'
-import { delay, filename } from './set-helpers'
+import { delay, filename, Request, RequestType, set } from '../src'
 
 // dumb object to test purity
 const dumb: Request = {
