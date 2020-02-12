@@ -1,5 +1,5 @@
 import { HeadersModifier, HttpHeaders, Request } from './_types'
-import { headers } from './_headers'
+import { headers } from './internal/headers'
 
 /**
  * Adjust Request headers, for any request

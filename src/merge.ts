@@ -1,8 +1,8 @@
 import { MergeRequest, Request, RequestType } from './_types'
-import { isIterable, isObject } from './_source-checkers'
-import { pipe } from './_pipe'
-import { path } from './_path'
-import { type } from './_type'
+import { isIterable, isObject } from './internal/source-checkers'
+import { pipe } from './tools/pipe'
+import { path } from './internal/path'
+import { type } from './internal/type'
 
 /**
  * Adjust Request url, by adding `/merge` to it

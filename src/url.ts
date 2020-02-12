@@ -1,9 +1,9 @@
 import { Request, RequestType, UrlRequest } from './_types'
-import { isString, isURL } from './_source-checkers'
-import { pipe } from './_pipe'
-import { fields } from './_fields'
-import { path } from './_path'
-import { type } from './_type'
+import { isString, isURL } from './internal/source-checkers'
+import { pipe } from './tools/pipe'
+import { fields } from './internal/fields'
+import { path } from './internal/path'
+import { type } from './internal/type'
 
 /**
  * Adjust Request url, by adding `/url` to it; Set `remoteURL` from source

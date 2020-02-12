@@ -1,5 +1,5 @@
 import { FieldsModifier, Request, RequestFields } from './_types'
-import { fields } from './_fields'
+import { fields } from './internal/fields'
 
 /**
  * Adjust Request fields, for any request

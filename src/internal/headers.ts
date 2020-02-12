@@ -1,4 +1,4 @@
-import { HttpHeaders, Request } from './_types'
+import { HttpHeaders, Request } from '../_types'
 
 /**
  * Adjust Request headers, by extending `headers`

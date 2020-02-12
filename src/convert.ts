@@ -1,4 +1,4 @@
-import { path } from './_path'
+import { path } from './internal/path'
 
 /**
  * Adjust Request url, by adding `/convert` to it

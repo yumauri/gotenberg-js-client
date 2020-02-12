@@ -1,6 +1,6 @@
 import FormData from 'form-data'
 import { PingRequest, RequestFields, RequestType, TupleFormSource, TypedRequest } from './_types'
-import { DEFAULT_FILENAME, toFormSources } from './_source-converters'
+import { DEFAULT_FILENAME, toFormSources } from './internal/source-converters'
 
 /**
  * Helper function to convert fields and files to form data

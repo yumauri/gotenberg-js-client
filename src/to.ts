@@ -7,7 +7,7 @@ import {
   PaperOptions,
   RequestFields,
 } from './_types'
-import { fields } from './_fields'
+import { fields } from './internal/fields'
 import { marginSizes, paperSize } from './to-helpers'
 
 /**

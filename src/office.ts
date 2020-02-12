@@ -1,7 +1,7 @@
 import { OfficeRequest, Request, RequestType } from './_types'
-import { pipe } from './_pipe'
-import { path } from './_path'
-import { type } from './_type'
+import { pipe } from './tools/pipe'
+import { path } from './internal/path'
+import { type } from './internal/type'
 
 /**
  * Adjust Request url, by adding `/office` to it
