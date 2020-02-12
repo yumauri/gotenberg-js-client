@@ -25,4 +25,3 @@ export { pipe } from './tools/pipe'
 
 // export types
 export * from './_types'
-export * from './client'

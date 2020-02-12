@@ -12,7 +12,6 @@ export const set: {
 } = (...opts) => {
   const options: RequestFields = {}
 
-  // check every given option
   for (let i = opts.length; i--; ) {
     const op = opts[i]
     if (typeof op === 'function') {

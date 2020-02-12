@@ -1,6 +1,12 @@
-import { GotenbergClient, GotenbergClientClass, GotenbergClientFunction } from './client'
-import { client as native } from './client/native'
-import { Request, RequestType, Source } from './_types'
+import { client as native } from './client/node'
+import {
+  GotenbergClient,
+  GotenbergClientClass,
+  GotenbergClientFunction,
+  Request,
+  RequestType,
+  Source,
+} from './_types'
 
 /**
  * Initializes Gotenberg request
