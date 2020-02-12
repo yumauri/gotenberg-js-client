@@ -1,7 +1,7 @@
 import http from 'http'
 import https from 'https'
 import FormData from 'form-data'
-import { GotenbergClientFunction } from './'
+import { GotenbergClientFunction } from '../_types'
 
 /**
  * Little helper to parse url and get needed request method - either HTTP or HTTPS
