@@ -1,5 +1,5 @@
-import { Request } from '../src'
-import { headers } from '../src/_headers'
+import { Request } from '../../src'
+import { headers } from '../../src/internal/headers'
 
 // dumb object to test purity
 const dumb = { url: 'test', headers: { Test: 'Test' } }

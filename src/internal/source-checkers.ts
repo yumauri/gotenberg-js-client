@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { FileURI, ObjectSource, PlainSource, Source, TupleSource } from './_types'
+import { FileURI, ObjectSource, PlainSource, Source, TupleSource } from '../_types'
 
 /**
  * Check if argument is String

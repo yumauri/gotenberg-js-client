@@ -1,8 +1,8 @@
 import { ChromeRequestFields, HtmlRequest, Request, RequestType } from './_types'
-import { pipe } from './_pipe'
-import { fields } from './_fields'
-import { path } from './_path'
-import { type } from './_type'
+import { pipe } from './tools/pipe'
+import { fields } from './internal/fields'
+import { path } from './internal/path'
+import { type } from './internal/type'
 
 /**
  * Adjust Request url, by adding `/html` to it; Can add request parameters

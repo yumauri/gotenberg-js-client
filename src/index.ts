@@ -20,8 +20,8 @@ export * from './set-helpers'
 export * from './to-helpers'
 export * from './page'
 
-// export pipe helper
-export { pipe } from './_pipe'
+// export pipe tool
+export { pipe } from './tools/pipe'
 
 // export types
 export * from './_types'

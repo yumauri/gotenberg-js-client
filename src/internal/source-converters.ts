@@ -1,7 +1,7 @@
 import { basename, extname } from 'path'
 import { createReadStream, ReadStream } from 'fs'
 import { Readable } from 'stream'
-import { FileURI, PlainSource, Source, TupleSource, TupleStreamsSource } from './_types'
+import { FileURI, PlainSource, Source, TupleSource, TupleStreamsSource } from '../_types'
 import {
   isBuffer,
   isFileName,
@@ -12,7 +12,7 @@ import {
   isString,
   isTuple,
   isURL,
-} from './_source-checkers'
+} from './source-checkers'
 
 export const DEFAULT_FILENAME = 'index.html'
 

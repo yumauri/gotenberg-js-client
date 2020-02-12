@@ -1,4 +1,4 @@
-import { Request, RequestFields } from './_types'
+import { Request, RequestFields } from '../_types'
 
 /**
  * Adjust Request fields, by extending `fields`

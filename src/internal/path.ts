@@ -1,4 +1,4 @@
-import { Request } from './_types'
+import { Request } from '../_types'
 
 /**
  * Adjust Request fields, by adding given `path` to it

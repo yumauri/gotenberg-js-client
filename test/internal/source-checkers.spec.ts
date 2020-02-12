@@ -10,7 +10,7 @@ import {
   isString,
   isTuple,
   isURL,
-} from '../src/_source-checkers'
+} from '../../src/internal/source-checkers'
 
 // tslint:disable no-any
 

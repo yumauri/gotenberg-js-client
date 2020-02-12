@@ -7,7 +7,7 @@ import {
   Request,
   RequestType,
   UrlRequest,
-} from './_types'
+} from '../_types'
 
 /**
  * Adjust Request fields, by changing `type`
