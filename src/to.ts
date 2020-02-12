@@ -71,8 +71,8 @@ export const to: {
   }
 
   // update page size and margins, if we have some
-  paperSize(paper)(options)
-  marginSizes(margins)(options)
+  paper && paperSize(paper)(options)
+  margins && marginSizes(margins)(options)
 
   return fields(options)
 }

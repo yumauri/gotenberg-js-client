@@ -80,7 +80,7 @@ test('Test `tabloid` function', () => {
 })
 
 test('Test `paperSize` function', () => {
-  let object = {}
+  const object = {}
   paperSize([1, 2])(object)
   expect(object).toEqual({ paperWidth: 1, paperHeight: 2 })
   paperSize({ width: 5, height: 6 })(object)
@@ -89,10 +89,6 @@ test('Test `paperSize` function', () => {
   expect(object).toEqual({ paperWidth: 10 })
   paperSize({ height: 15 })(object)
   expect(object).toEqual({ paperHeight: 15 })
-
-  object = {}
-  paperSize()(object)
-  expect(object).toEqual(object)
 })
 
 test('Test `noMargins` function', () => {
@@ -129,7 +125,7 @@ test('Test `largeMargins` function', () => {
 })
 
 test('Test `marginSizes` function', () => {
-  let object = {}
+  const object = {}
   marginSizes([1, 2, 3, 4])(object)
   expect(object).toEqual({
     marginTop: 1,
@@ -153,8 +149,4 @@ test('Test `marginSizes` function', () => {
   expect(object).toEqual({
     marginBottom: 15,
   })
-
-  object = {}
-  marginSizes()(object)
-  expect(object).toEqual(object)
 })

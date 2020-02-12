@@ -10,7 +10,6 @@ export const add: {
 } = (...opts) => {
   const httpHeaders: HttpHeaders = {}
 
-  // check every given option
   for (let i = opts.length; i--; ) {
     const op = opts[i]
     op(httpHeaders)

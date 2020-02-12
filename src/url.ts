@@ -12,16 +12,13 @@ import { type } from './internal/type'
 export const url: {
   (request: Request): UrlRequest
 } = request => {
-  let remoteURL: string
-  if (isString(request.source)) remoteURL = request.source
-  else if (isURL(request.source)) remoteURL = request.source.toString()
-  else {
+  if (!isString(request.source) && !isURL(request.source)) {
     throw new Error('Invalid source, should be url string or instance of URL')
   }
 
   return pipe(
     fields({
-      remoteURL,
+      remoteURL: request.source.toString(),
 
       // set all margins to 0
       // > Attention: when converting a website to PDF, you should remove all margins.

@@ -1,22 +1,21 @@
 import { HeadersModifier, HttpHeaders } from './_types'
+import { setProperty } from './tools/fn'
 
 // https://thecodingmachine.github.io/gotenberg/#url.custom_http_headers
 
 /**
  * Adds/Modifies single header for Url conversion
  */
-export const header = (name: string, value: number | string): HeadersModifier => (
-  httpHeaders: HttpHeaders
-) => (httpHeaders[`Gotenberg-Remoteurl-${name}`] = value)
+export const header = (name: string, value: number | string): HeadersModifier =>
+  setProperty(`Gotenberg-Remoteurl-${name}`)(value)
 
 /**
  * Adds/Modifies many headers for Url conversion
  */
-export const headers = (headers: HttpHeaders): HeadersModifier => (httpHeaders: HttpHeaders) => {
+export const headers = (headers: HttpHeaders): HeadersModifier => _ => {
   for (const name in headers) {
-    header(name, headers[name])(httpHeaders)
+    header(name, headers[name])(_)
   }
-  return httpHeaders
 }
 
 // https://thecodingmachine.github.io/gotenberg/#webhook.custom_http_headers
@@ -24,18 +23,14 @@ export const headers = (headers: HttpHeaders): HeadersModifier => (httpHeaders: 
 /**
  * Adds/Modifies single header for Webhook
  */
-export const webhookHeader = (name: string, value: number | string): HeadersModifier => (
-  httpHeaders: HttpHeaders
-) => (httpHeaders[`Gotenberg-Webhookurl-${name}`] = value)
+export const webhookHeader = (name: string, value: number | string): HeadersModifier =>
+  setProperty(`Gotenberg-Webhookurl-${name}`)(value)
 
 /**
  * Adds/Modifies many headers for Webhook
  */
-export const webhookHeaders = (headers: HttpHeaders): HeadersModifier => (
-  httpHeaders: HttpHeaders
-) => {
+export const webhookHeaders = (headers: HttpHeaders): HeadersModifier => _ => {
   for (const name in headers) {
-    webhookHeader(name, headers[name])(httpHeaders)
+    webhookHeader(name, headers[name])(_)
   }
-  return httpHeaders
 }
