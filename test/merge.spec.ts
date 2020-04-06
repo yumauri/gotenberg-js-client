@@ -12,7 +12,7 @@ const dumb: Request = {
   },
 }
 
-test('Should accept iterable as source', function() {
+test('Should accept iterable as source', function () {
   expect(() => merge({ ...dumb, source: [] })).not.toThrow()
   expect(() => merge({ ...dumb, source: new Map() })).not.toThrow()
   expect(() => merge({ ...dumb, source: new Set() })).not.toThrow()

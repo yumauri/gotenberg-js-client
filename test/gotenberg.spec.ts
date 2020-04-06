@@ -34,7 +34,7 @@ test('Test `gotenberg` function with custom functional client', () => {
     get() {}, // tslint:disable-line: no-empty
     post() {}, // tslint:disable-line: no-empty
   }
-  const client = function(arg: any) {
+  const client = function (arg: any) {
     mock(arg)
     return clientImpl
   }

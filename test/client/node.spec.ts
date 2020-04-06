@@ -20,7 +20,7 @@ test('`client` should return functional client', () => {
 })
 
 test('Should do GET request', async () => {
-  nock('https://127.0.0.1:3000')
+  nock('https://127.0.0.1:3000') //
     .get('/ping')
     .reply(200, { status: 'OK' })
 
@@ -30,7 +30,7 @@ test('Should do GET request', async () => {
 })
 
 test('Should throw on bad GET request', async () => {
-  nock('https://127.0.0.1:3000')
+  nock('https://127.0.0.1:3000') //
     .get('/ping')
     .reply(500)
 
@@ -45,7 +45,7 @@ test('Should throw on bad GET request', async () => {
 })
 
 test('Should do POST request', async () => {
-  nock('https://127.0.0.1:3000')
+  nock('https://127.0.0.1:3000') //
     .post('/convert/html')
     .reply(200, { status: 'OK' })
 
@@ -55,7 +55,7 @@ test('Should do POST request', async () => {
 })
 
 test('Should throw on bad POST request', async () => {
-  nock('https://127.0.0.1:3000')
+  nock('https://127.0.0.1:3000') //
     .post('/convert/html')
     .reply(500, { status: 'ERROR' })
 
@@ -70,7 +70,7 @@ test('Should throw on bad POST request', async () => {
 })
 
 test('Should handle http', async () => {
-  nock('http://127.0.0.1:3000')
+  nock('http://127.0.0.1:3000') //
     .get('/ping')
     .reply(200, { status: 'OK' })
 

@@ -25,7 +25,7 @@ const buffer = Buffer.from('test')
 const generator = function* gen() {} // tslint:disable-line no-empty
 const iterator = { [Symbol.iterator]: generator }
 
-test('Test `isBuffer` function', function() {
+test('Test `isBuffer` function', function () {
   expect(isBuffer(undefined)).toBe(false)
   expect(isBuffer(null)).toBe(false)
   expect(isBuffer(string)).toBe(false)
@@ -40,7 +40,7 @@ test('Test `isBuffer` function', function() {
   expect(isBuffer(iterator)).toBe(false)
 })
 
-test('Test `isFileName` function', function() {
+test('Test `isFileName` function', function () {
   expect(isFileName(undefined)).toBe(false)
   expect(isFileName(null)).toBe(false)
   expect(isFileName(string)).toBe(false)
@@ -58,7 +58,7 @@ test('Test `isFileName` function', function() {
   expect(isFileName(iterator)).toBe(false)
 })
 
-test('Test `isFileUri` function', function() {
+test('Test `isFileUri` function', function () {
   expect(isFileUri(undefined)).toBe(false)
   expect(isFileUri(null)).toBe(false)
   expect(isFileUri(string)).toBe(false)
@@ -75,7 +75,7 @@ test('Test `isFileUri` function', function() {
   expect(isFileUri(iterator)).toBe(false)
 })
 
-test('Test `isIterable` function', function() {
+test('Test `isIterable` function', function () {
   expect(isIterable(undefined)).toBe(false)
   expect(isIterable(null)).toBe(false)
   expect(isIterable(string)).toBe(false)
@@ -104,7 +104,7 @@ test('Test `isIterable` function', function() {
   expect(isIterable([iterator as any])).toBe(false)
 })
 
-test('Test `isObject` function', function() {
+test('Test `isObject` function', function () {
   expect(isObject(undefined)).toBe(false)
   expect(isObject(null)).toBe(false)
   expect(isObject(string)).toBe(false)
@@ -133,7 +133,7 @@ test('Test `isObject` function', function() {
   expect(isObject({ test: iterator as any })).toBe(false)
 })
 
-test('Test `isPlain` function', function() {
+test('Test `isPlain` function', function () {
   expect(isPlain(undefined)).toBe(false)
   expect(isPlain(null)).toBe(false)
   expect(isPlain(string)).toBe(true) // <-
@@ -148,7 +148,7 @@ test('Test `isPlain` function', function() {
   expect(isPlain(iterator)).toBe(false)
 })
 
-test('Test `isStream` function', function() {
+test('Test `isStream` function', function () {
   expect(isStream(undefined)).toBe(false)
   expect(isStream(null)).toBe(false)
   expect(isStream(string)).toBe(false)
@@ -164,7 +164,7 @@ test('Test `isStream` function', function() {
   expect(isStream(new Readable())).toBe(true) // <-
 })
 
-test('Test `isString` function', function() {
+test('Test `isString` function', function () {
   expect(isString(undefined)).toBe(false)
   expect(isString(null)).toBe(false)
   expect(isString(string)).toBe(true) // <-
@@ -179,7 +179,7 @@ test('Test `isString` function', function() {
   expect(isString(iterator)).toBe(false)
 })
 
-test('Test `isTuple` function', function() {
+test('Test `isTuple` function', function () {
   expect(isTuple(undefined)).toBe(false)
   expect(isTuple(null)).toBe(false)
   expect(isTuple(string as any)).toBe(false)
@@ -222,7 +222,7 @@ test('Test `isTuple` function', function() {
   expect(isTuple(['test', iterator])).toBe(false)
 })
 
-test('Test `isURL` function', function() {
+test('Test `isURL` function', function () {
   expect(isURL(undefined)).toBe(false)
   expect(isURL(null)).toBe(false)
   expect(isURL(string)).toBe(false)
