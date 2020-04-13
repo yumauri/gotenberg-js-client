@@ -82,40 +82,36 @@ test('Should make client POST call with request', async () => {
 })
 
 test('Should throw on duplicates', () => {
-  const request: HtmlRequest =
-    {
-      type: RequestType.Html,
-      source: [
-        ['index.html', 'test'],
-        ['index.html', 'test'],
-      ],
-    } as any
+  const request: HtmlRequest = {
+    type: RequestType.Html,
+    source: [
+      ['index.html', 'test'],
+      ['index.html', 'test'],
+    ],
+  } as any
 
   expect(() => please(request)).toThrow(`There are duplicates in file names: index.html`)
 })
 
 test('Should throw on wrong source filenames', () => {
-  const request1: HtmlRequest =
-    {
-      type: RequestType.Html,
-      source: { 'test.doc': 'test' },
-    } as any
+  const request1: HtmlRequest = {
+    type: RequestType.Html,
+    source: { 'test.doc': 'test' },
+  } as any
 
   expect(() => please(request1)).toThrow(`File "index.html" is required for HTML conversion`)
 
-  const request2: MarkdownRequest =
-    {
-      type: RequestType.Markdown,
-      source: { 'test.doc': 'test' },
-    } as any
+  const request2: MarkdownRequest = {
+    type: RequestType.Markdown,
+    source: { 'test.doc': 'test' },
+  } as any
 
   expect(() => please(request2)).toThrow(`File "index.html" is required for Markdown conversion`)
 
-  const request3: OfficeRequest =
-    {
-      type: RequestType.Office,
-      source: { 'index.html': 'test' },
-    } as any
+  const request3: OfficeRequest = {
+    type: RequestType.Office,
+    source: { 'index.html': 'test' },
+  } as any
 
   expect(() => please(request3)).toThrow(
     `Default filename "index.html" is not allowed for Office conversion, ` +
