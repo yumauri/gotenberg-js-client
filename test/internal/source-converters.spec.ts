@@ -4,8 +4,8 @@ import { createReadStream, ReadStream } from 'fs'
 import {
   DEFAULT_FILENAME,
   fromFile,
+  toFormSources,
   toStream,
-  toStreams,
   toTuples,
 } from '../../src/internal/source-converters'
 
@@ -60,10 +60,10 @@ test('Test `toStream` function', async () => {
   expect(result).toEqual('test')
 })
 
-test('Test `toStreams` function', () => {
-  expect(toStreams()).toEqual([])
+test('Test `toFormSources` function', () => {
+  expect(toFormSources()).toEqual([])
 
-  const result1 = toStreams(Buffer.from('test'))
+  const result1 = toFormSources(Buffer.from('test'))
   expect(result1 instanceof Array).toBe(true)
   expect(result1[0] instanceof Array).toBe(true)
   expect(result1[0][0]).toEqual(DEFAULT_FILENAME)
