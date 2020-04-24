@@ -17,7 +17,7 @@ test('Should accept string and URL as source', () => {
   expect(() => url({ ...dumb, source: new URL('http://1') })).not.toThrow()
 })
 
-test('Should fail on any other source', function() {
+test('Should fail on any other source', function () {
   expect(() => url(dumb)).toThrow()
   expect(() => url({ ...dumb, source: [] })).toThrow()
   expect(() => url({ ...dumb, source: new Map() })).toThrow()

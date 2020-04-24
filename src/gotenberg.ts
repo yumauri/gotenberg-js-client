@@ -16,11 +16,11 @@ export const gotenberg = (
   client?: GotenbergClient | GotenbergClientFunction | GotenbergClientClass | object,
   config?: object
 ) => {
-  let clnt: GotenbergClient
+  let instance: GotenbergClient
 
   // if GotenbergClient object / instance provided -> just use it
   if (typeof client === 'object' && 'post' in client) {
-    clnt = client
+    instance = client
   }
 
   // if GotenbergClientFunction or GotenbergClientClass -> call or instantiate it
@@ -29,10 +29,10 @@ export const gotenberg = (
     // hope this will do ¯\_(ツ)_/¯
     if (/^class\s/.test(Function.prototype.toString.call(client))) {
       // guess this is GotenbergClientClass
-      clnt = new (client as GotenbergClientClass)(config)
+      instance = new (client as GotenbergClientClass)(config)
     } else {
       // guess this is GotenbergClientFunction
-      clnt = (client as GotenbergClientFunction)(config)
+      instance = (client as GotenbergClientFunction)(config)
     }
   }
 
@@ -40,13 +40,13 @@ export const gotenberg = (
   // (or maybe it is just undefined)
   // -> use native client
   else {
-    clnt = native(config || client)
+    instance = native(config || client)
   }
 
   return (source: Source): Request => ({
     type: RequestType.Undefined,
     url: url.toString(),
-    client: clnt,
+    client: instance,
     source,
     fields: {},
   })
