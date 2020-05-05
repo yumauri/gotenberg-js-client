@@ -52,8 +52,11 @@ export const toTuples = (source: Source, recursive = false): TupleSource[] => {
   }
 
   // single tuple like we want to be -> just return it
-  if (isTuple(source) && isFileName(source[0])) {
-    return [source]
+  if (isTuple(source)) {
+    if (isFileName(source[0])) {
+      return [source]
+    }
+    throw new Error(`Source name "${source[0]}" doesn't look like file name`)
   }
 
   // if object source
@@ -61,7 +64,11 @@ export const toTuples = (source: Source, recursive = false): TupleSource[] => {
     const ret: TupleSource[] = []
     for (const key in source) {
       if (source.hasOwnProperty(key)) {
-        ret.push([key, source[key]])
+        if (isFileName(key)) {
+          ret.push([key, source[key]])
+        } else {
+          throw new Error(`Source name "${key}" doesn't look like file name`)
+        }
       }
     }
     return ret
