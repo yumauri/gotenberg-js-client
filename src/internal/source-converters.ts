@@ -74,12 +74,6 @@ export const toTuples = (source: Source, recursive = false): TupleSource[] => {
     return ret
   }
 
-  // if we get there inside of recursion -> this is bad
-  if (recursive) {
-    // by tests looks like this is impossible case -> should remove it?
-    throw new Error('Bad source, possible recursive iterables?')
-  }
-
   // if iterable source
   if (isIterable(source)) {
     const ret: TupleSource[] = []
