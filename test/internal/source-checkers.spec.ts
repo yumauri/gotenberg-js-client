@@ -27,7 +27,7 @@ const buffer = Buffer.from('test')
 const generator = function* gen() {} // tslint:disable-line no-empty
 const iterator = { [Symbol.iterator]: generator }
 
-test('Test `isBlob` function', function() {
+test('Test `isBlob` function', function () {
   expect(isBlob(undefined)).toBe(false)
   expect(isBlob(null)).toBe(false)
   expect(isBlob(string)).toBe(false)
@@ -57,7 +57,7 @@ test('Test `isBuffer` function', function () {
   expect(isBuffer(iterator)).toBe(false)
 })
 
-test('Test `isFile` function', function() {
+test('Test `isFile` function', function () {
   expect(isFile(undefined)).toBe(false)
   expect(isFile(null)).toBe(false)
   expect(isFile(string)).toBe(false)
