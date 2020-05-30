@@ -6,7 +6,7 @@ import { HttpHeaders, Request } from '../_types'
  */
 export const headers: {
   <RequestEx extends Request>(headers: HttpHeaders): (request: RequestEx) => RequestEx
-} = headers => request => ({
+} = (headers) => (request) => ({
   ...request,
   headers: {
     ...request.headers,

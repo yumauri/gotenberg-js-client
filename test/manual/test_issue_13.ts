@@ -10,7 +10,7 @@ const toMergedPDF = pipe(gotenberg('http://localhost:3500'), merge, please)
 async function createPdf(filename: string, content: string) {
   const pdf = await toPDF(content)
   pdf.pipe(createWriteStream(filename))
-  return new Promise(resolve => pdf.on('end', resolve))
+  return new Promise((resolve) => pdf.on('end', resolve))
 }
 
 async function main() {

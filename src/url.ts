@@ -11,7 +11,7 @@ import { type } from './internal/type'
  */
 export const url: {
   (request: Request): UrlRequest
-} = request => {
+} = (request) => {
   if (!isString(request.source) && !isURL(request.source)) {
     throw new Error('Invalid source, should be url string or instance of URL')
   }

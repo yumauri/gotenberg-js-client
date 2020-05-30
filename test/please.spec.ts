@@ -27,7 +27,7 @@ test('Should make client GET call with ping request', async () => {
   const request: PingRequest = {
     type: RequestType.Ping,
     client: {
-      get: async url => {
+      get: async (url) => {
         get(url)
         return createReadStream(__filename)
       },

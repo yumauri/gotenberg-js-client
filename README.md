@@ -31,7 +31,6 @@ $ npm install --save gotenberg-js-client
 ```typescript
 import { pipe, gotenberg, convert, html, please } from 'gotenberg-js-client'
 
-// prettier-ignore
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
@@ -55,7 +54,7 @@ const pdf = await toPDF('<html>...</html>')
 pdf.pipe(fs.createWriteStream('index.pdf'))
 
 // or you can send it as response in Express application
-app.get('/pdf', function(req, res) {
+app.get('/pdf', function (req, res) {
   //...
   pdf.pipe(res)
 })
@@ -199,7 +198,7 @@ set(scale(0.75))
 //...
 ```
 
-## Markdown
+## Markdown // [Gotenberg documentation](https://thecodingmachine.github.io/gotenberg/#markdown)
 
 ```typescript
 import { pipe, gotenberg, convert, markdown, please } from 'gotenberg-js-client'
@@ -233,7 +232,9 @@ const pdf = await toPDF({
 })
 ```
 
-## Office
+Note: I use strings here as an example, remind that you can use other supported [source](https://github.com/yumauri/gotenberg-js-client/wiki/Source) type.
+
+## Office // [Gotenberg documentation](https://thecodingmachine.github.io/gotenberg/#office)
 
 ```typescript
 import {
@@ -262,12 +263,23 @@ const toPDF = pipe(
 const pdf = await toPDF('file://document.docx')
 ```
 
-## Url
+Note: I use [file link](https://en.wikipedia.org/wiki/File_URI_scheme) here as an example, remind that you can use other supported [source](https://github.com/yumauri/gotenberg-js-client/wiki/Source) type, say, `Buffer`, or `stream.Readable`:
+
+```typescript
+https.get(
+  'https://file-examples.com/wp-content/uploads/2017/02/file-sample_100kB.docx',
+  async (document) => {
+    const pdf = await toPDF({ 'document.docx': document })
+    // ...
+  }
+)
+```
+
+## Url // [Gotenberg documentation](https://thecodingmachine.github.io/gotenberg/#url)
 
 ```typescript
 import { pipe, gotenberg, convert, url, please } from 'gotenberg-js-client'
 
-// prettier-ignore
 const toPDF = pipe(
   gotenberg('http://localhost:3000'),
   convert,
@@ -283,6 +295,8 @@ const pdf = await toPDF('https://google.com')
 // or URL object
 const pdf = await toPDF(new URL('https://google.com'))
 ```
+
+Note: The only supported source for Url conversion is text url or instance of `URL` class.
 
 You can set remote url header (for example, for [authentication](https://github.com/thecodingmachine/gotenberg/issues/81) or [host specifying](https://github.com/thecodingmachine/gotenberg/issues/116)) with helper `add(header)` (or `add(headers)`, or both):
 
@@ -302,14 +316,13 @@ const toPDF = pipe(
 
 (This also applies for Webhook headers, just use `webhookHeader` instead of `header` and `webhookHeaders` instead of `headers`).
 
-## Merge
+## Merge // [Gotenberg documentation](https://thecodingmachine.github.io/gotenberg/#merge)
 
 Like you would think:
 
 ```typescript
 import { pipe, gotenberg, merge, please } from 'gotenberg-js-client'
 
-// prettier-ignore
 const toMergedPDF = pipe(
   gotenberg('http://localhost:3000'),
   merge,
@@ -319,17 +332,17 @@ const toMergedPDF = pipe(
 
 ## Bonus
 
-If you happen to use this package from JavaScript, you will, obviously, lost type safety, but in return, you can use proposed pipe operator (with [Babel plugin](https://github.com/tc39/proposal-pipeline-operator)), to get beauty like this:
+If you happen to use this package from JavaScript, you will, obviously, lost type safety, but in return, you can use [proposed pipe operator](https://github.com/tc39/proposal-pipeline-operator) (with [Babel plugin](https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator)), to get beauty like this:
 
 ```javascript
 const toPDF = source =>
   source
-  |> gotenberg('http://localhost:3000')
-  |> convert
-  |> html
-  |> to(a4, noMargins)
-  |> set(filename('out.pdf'))
-  |> please
+    |> gotenberg('http://localhost:3000')
+    |> convert
+    |> html
+    |> to(a4, noMargins)
+    |> set(filename('out.pdf'))
+    |> please
 ```
 
 ## Names clashes

@@ -12,5 +12,5 @@ pipe(
   office,
   please
 )(['aaaa', buffer])
-  .then(pdf => pdf.pipe(createWriteStream(`${__dirname}/document.pdf`)))
+  .then((pdf) => pdf.pipe(createWriteStream(`${__dirname}/document.pdf`)))
   .catch(console.error)

@@ -12,7 +12,7 @@ export const header = (name: string, value: number | string): HeadersModifier =>
 /**
  * Adds/Modifies many headers for Url conversion
  */
-export const headers = (headers: HttpHeaders): HeadersModifier => _ => {
+export const headers = (headers: HttpHeaders): HeadersModifier => (_) => {
   for (const name in headers) {
     header(name, headers[name])(_)
   }
@@ -29,7 +29,7 @@ export const webhookHeader = (name: string, value: number | string): HeadersModi
 /**
  * Adds/Modifies many headers for Webhook
  */
-export const webhookHeaders = (headers: HttpHeaders): HeadersModifier => _ => {
+export const webhookHeaders = (headers: HttpHeaders): HeadersModifier => (_) => {
   for (const name in headers) {
     webhookHeader(name, headers[name])(_)
   }

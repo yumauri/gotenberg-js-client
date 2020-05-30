@@ -53,7 +53,7 @@ test('Test `toStream` function', async () => {
   const chunks: any[] = []
   const stream = toStream('test')
   const result = await new Promise((resolve, reject) => {
-    stream.on('data', chunk => chunks.push(chunk))
+    stream.on('data', (chunk) => chunks.push(chunk))
     stream.on('error', reject)
     stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')))
   })

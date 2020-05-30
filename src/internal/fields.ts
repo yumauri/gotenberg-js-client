@@ -6,7 +6,7 @@ import { Request, RequestFields } from '../_types'
  */
 export const fields: {
   <RequestEx extends Request>(fields: Partial<RequestFields>): (request: RequestEx) => RequestEx
-} = fields => request => ({
+} = (fields) => (request) => ({
   ...request,
   fields: {
     ...request.fields,
