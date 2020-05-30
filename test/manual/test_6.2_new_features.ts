@@ -17,5 +17,5 @@ pipe(
   set(scale(0.5)),
   please
 )(`file://${__dirname}/statement.html`)
-  .then(pdf => pdf.pipe(createWriteStream(`${__dirname}/scale.pdf`)))
+  .then((pdf) => pdf.pipe(createWriteStream(`${__dirname}/scale.pdf`)))
   .catch(console.error)

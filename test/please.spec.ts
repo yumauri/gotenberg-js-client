@@ -27,7 +27,7 @@ test('Should make client GET call with ping request', async () => {
   const request: PingRequest = {
     type: RequestType.Ping,
     client: {
-      get: async url => {
+      get: async (url) => {
         get(url)
         return createReadStream(__filename)
       },
@@ -117,4 +117,41 @@ test('Should throw on wrong source filenames', () => {
     `Default filename "index.html" is not allowed for Office conversion, ` +
       `looks like you didn't set filename for document`
   )
+})
+
+test('Should throw on wrong source filename 2', () => {
+  const request1: OfficeRequest = {
+    type: RequestType.Office,
+    source: ['aaaaa', 'test'],
+  } as any
+
+  expect(() => please(request1)).toThrow(`Source name "aaaaa" doesn't look like file name`)
+
+  const request2: OfficeRequest = {
+    type: RequestType.Office,
+    source: { aaaaa: 'test' },
+  } as any
+
+  expect(() => please(request2)).toThrow(`Source name "aaaaa" doesn't look like file name`)
+
+  const request3: OfficeRequest = {
+    type: RequestType.Office,
+    source: [['aaaaa', 'test']],
+  } as any
+
+  expect(() => please(request3)).toThrow(`Source name "aaaaa" doesn't look like file name`)
+
+  const request4: OfficeRequest = {
+    type: RequestType.Office,
+    source: [{ aaaaa: 'test' }],
+  } as any
+
+  expect(() => please(request4)).toThrow(`Source name "aaaaa" doesn't look like file name`)
+
+  const request5: OfficeRequest = {
+    type: RequestType.Office,
+    source: [['aaaaa', 'test'], { aaaaa: 'test' }],
+  } as any
+
+  expect(() => please(request5)).toThrow(`Source name "aaaaa" doesn't look like file name`)
 })

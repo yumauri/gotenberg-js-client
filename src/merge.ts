@@ -10,7 +10,7 @@ import { type } from './internal/type'
  */
 export const merge: {
   (request: Request): MergeRequest
-} = request => {
+} = (request) => {
   if (!isIterable(request.source) && !isObject(request.source)) {
     throw new Error('Invalid source, should be iterable or object')
   }

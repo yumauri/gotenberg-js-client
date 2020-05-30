@@ -31,7 +31,7 @@ export function post(
     })
 
     req.on('error', reject)
-    req.on('response', res => {
+    req.on('response', (res) => {
       if (res.statusCode === 200) {
         resolve(res)
       } else {
@@ -68,7 +68,7 @@ export function get(this: object | null, url: string): Promise<NodeJS.ReadableSt
     })
 
     req.on('error', reject)
-    req.on('response', res => {
+    req.on('response', (res) => {
       if (res.statusCode === 200) {
         resolve(res)
       } else {

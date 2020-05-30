@@ -11,6 +11,6 @@ pipe(
   convert,
   office,
   please
-)(['doc.docx', buffer])
+)(['aaaa', buffer])
   .then((pdf) => pdf.pipe(createWriteStream(`${__dirname}/document.pdf`)))
   .catch(console.error)

@@ -57,3 +57,9 @@ test('Should change type to Markdown', () => {
     type: RequestType.Markdown,
   })
 })
+
+test('Should throw on double conversion', () => {
+  const request = { type: RequestType.Url } as Request
+  const fn = type(RequestType.Office)
+  expect(() => fn(request)).toThrow(`Cannot set "Office" conversion, already set to "Url"`)
+})

@@ -17,5 +17,5 @@ pipe(
   set(range('1-1')),
   please
 )(`https://request.urih.com/`)
-  .then(pdf => pdf.pipe(createWriteStream(`${__dirname}/headers.pdf`)))
+  .then((pdf) => pdf.pipe(createWriteStream(`${__dirname}/headers.pdf`)))
   .catch(console.error)

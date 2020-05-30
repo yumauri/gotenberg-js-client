@@ -32,7 +32,7 @@ const formdata = (fields: RequestFields, files: TupleFormSource[]) => {
  * Validate sources' file names
  */
 const validateSources = (type: RequestType, sources: TupleFormSource[]): TupleFormSource[] => {
-  const filenames = sources.map(source => source[0])
+  const filenames = sources.map((source) => source[0])
 
   // check for duplicates
   const duplicates = filenames.filter((name, index, arr) => arr.indexOf(name) !== index)
@@ -73,7 +73,7 @@ export const please: {
   // https://thecodingmachine.github.io/gotenberg/#ping
   if (request.type === RequestType.Ping) {
     if (typeof request.client.get === 'function') {
-      return request.client.get(request.url).then(response => {
+      return request.client.get(request.url).then((response) => {
         // https://nodejs.org/docs/latest-v10.x/api/http.html#http_class_http_clientrequest
         // If no 'response' handler is added, then the response will be entirely discarded.
         // However, if a 'response' event handler is added, then the data from the response

@@ -39,6 +39,19 @@ test('Test `toTuples` function', () => {
   expect(() => toTuples(set)).toThrow('Bad source, don\'t know what to do with "[object Set]"')
 })
 
+test('Test `toTuples` function, different edge cases', () => {
+  // line 46
+  const file = createReadStream(`${__dirname}/../manual/statement.html`)
+  expect(toTuples(file)).toEqual([['index.html', file]])
+
+  // line 66, `hasOwnProperty`
+  function Src(this: any) {
+    this['index.html'] = 'test'
+  }
+  Src.prototype['header.html'] = ''
+  expect(toTuples(new Src())).toEqual([['index.html', 'test']])
+})
+
 test('Test `fromFile` function', () => {
   expect(fromFile('file:' + __filename) instanceof ReadStream).toBe(true)
   expect(fromFile('file://' + __filename) instanceof ReadStream).toBe(true)
@@ -53,7 +66,7 @@ test('Test `toStream` function', async () => {
   const chunks: any[] = []
   const stream = toStream('test')
   const result = await new Promise((resolve, reject) => {
-    stream.on('data', chunk => chunks.push(chunk))
+    stream.on('data', (chunk) => chunks.push(chunk))
     stream.on('error', reject)
     stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')))
   })

@@ -16,5 +16,5 @@ pipe(
   }),
   please
 )(`file://${__dirname}/statement.html`)
-  .then(pdf => pdf.pipe(createWriteStream(`${__dirname}/statement.pdf`)))
+  .then((pdf) => pdf.pipe(createWriteStream(`${__dirname}/statement.pdf`)))
   .catch(console.error)
