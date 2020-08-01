@@ -12,11 +12,14 @@ const dumb: Request = {
   },
 }
 
-test('Should accept iterable as source', function () {
+test('Should accept iterable as source', () => {
   expect(() => merge({ ...dumb, source: [] })).not.toThrow()
   expect(() => merge({ ...dumb, source: new Map() })).not.toThrow()
   expect(() => merge({ ...dumb, source: new Set() })).not.toThrow()
-  expect(() => merge({ ...dumb, source: arguments })).not.toThrow()
+  ;(function () {
+    // use new function to get empty arguments
+    expect(() => merge({ ...dumb, source: arguments })).not.toThrow()
+  })()
 
   function* generator() {} // tslint:disable-line no-empty
   const iterator = { [Symbol.iterator]: generator }

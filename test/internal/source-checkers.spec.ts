@@ -83,7 +83,10 @@ test('Test `isIterable` function', function () {
   expect(isIterable(array)).toBe(true) // <-
   expect(isIterable(map)).toBe(true) // <-
   expect(isIterable(set)).toBe(true) // <-
-  expect(isIterable(arguments)).toBe(true) // <-
+  ;(function () {
+    // use new function to get empty arguments
+    expect(isIterable(arguments)).toBe(true) // <-
+  })()
   expect(isIterable(object)).toBe(false)
   expect(isIterable(buffer)).toBe(false)
   expect(isIterable(generator())).toBe(true) // <-
