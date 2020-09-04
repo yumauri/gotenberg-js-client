@@ -47,6 +47,7 @@ test('Test `isFileName` function', function () {
   expect(isFileName('index.html')).toBe(true) // <-
   expect(isFileName('test.md')).toBe(true) // <-
   expect(isFileName('image.gif')).toBe(true) // <-
+  expect(isFileName('中文.gif')).toBe(true) // <-
   expect(isFileName(url)).toBe(false)
   expect(isFileName(array)).toBe(false)
   expect(isFileName(map)).toBe(false)
@@ -56,6 +57,7 @@ test('Test `isFileName` function', function () {
   expect(isFileName(buffer)).toBe(false)
   expect(isFileName(generator())).toBe(false)
   expect(isFileName(iterator)).toBe(false)
+  expect(isFileName('中文')).toBe(false)
 })
 
 test('Test `isFileUri` function', function () {
