@@ -82,7 +82,7 @@ export const isIterable = (
  * Check, if given argument is simple string, and presumably is is just file name
  * I hope no one will wants to use filename longer than 50 symbols :)
  */
-const fileNameRE = /^[\u4e00-\u9fa5\w\s\(\),-]+\.[A-Za-z0-9]+$/
+const fileNameRE = /^[\p{L}\w\s\(\),-]+\.[A-Za-z0-9]+$/u
 const MIN_FILE_NAME_LENGTH = 3
 const MAX_FILE_NAME_LENGTH = 50
 export const isFileName = (x: Source | undefined | null) =>
