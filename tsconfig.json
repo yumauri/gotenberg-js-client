@@ -13,6 +13,6 @@
     "declaration": true,
     "baseUrl": "./src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["src"],
+  "exclude": ["**/node_modules", "**/.*/", "**/*.spec.ts"]
 }
