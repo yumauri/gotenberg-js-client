@@ -7,7 +7,7 @@ import { type } from './internal/type'
 
 /**
  * Adjust Request url, by adding `/url` to it; Set `remoteURL` from source
- * @return new HtmlRequest, doesn't modify original Request
+ * @return new UrlRequest, doesn't modify original Request
  */
 export const url: {
   (request: Request): UrlRequest

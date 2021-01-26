@@ -110,11 +110,8 @@ export type OfficeRequestFields = {
 // Attention: when converting a website to PDF, you should remove all margins
 // If not, some of the content of the page might be hidden
 // https://thecodingmachine.github.io/gotenberg/#url
-export type UrlRequestFields = {
+export type UrlRequestFields = HtmlRequestFields & {
   remoteURL?: string
-
-  // https://thecodingmachine.github.io/gotenberg/#html.paper_size_margins_orientation_scaling
-  scale?: number
 }
 
 // merge conversion doesn't have any form fields

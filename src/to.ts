@@ -1,24 +1,14 @@
-import {
-  ConversionOptions,
-  HtmlRequest,
-  MarginOptions,
-  MarkdownRequest,
-  OfficeRequest,
-  PaperOptions,
-  RequestFields,
-} from './_types'
+import { ConversionOptions, MarginOptions, PaperOptions, Request, RequestFields } from './_types'
 import { fields } from './internal/fields'
 import { marginSizes, paperSize } from './to-helpers'
 
 /**
- * Adjust Request fields, for html, markdown or office requests
- * @return new Request (Html|Markdown|Office), doesn't modify original Request
+ * Adjust Request fields, for any request
+ * @return new typed Request, doesn't modify original Request
  */
 export const to: {
-  (...opts: ConversionOptions[]): (request: HtmlRequest) => HtmlRequest
-  (...opts: ConversionOptions[]): (request: OfficeRequest) => OfficeRequest
-  (...opts: ConversionOptions[]): (request: MarkdownRequest) => MarkdownRequest
-} = (...opts: ConversionOptions[]): any => {
+  <RequestEx extends Request>(...opts: ConversionOptions[]): (request: RequestEx) => RequestEx
+} = (...opts): any => {
   const options: RequestFields = {}
 
   // page size and margins options
