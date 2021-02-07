@@ -25,7 +25,7 @@
     {
       "path": "pkg/dist-node/index.js",
       "webpack": false,
-      "limit": "4106 B"
+      "limit": "4119 B"
     }
   ],
   "@pika/pack": {

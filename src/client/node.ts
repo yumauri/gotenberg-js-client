@@ -26,8 +26,12 @@ export function post(
   return new Promise((resolve, reject) => {
     const req = request(_url, {
       method: 'POST',
-      headers: { ...data.getHeaders(), ...headers },
       ...this, // extends with config options
+      headers: {
+        ...data.getHeaders(),
+        ...headers,
+        ...(this ? (this as any).headers : null), // extends with config headers
+      },
     })
 
     req.on('error', reject)
