@@ -12,6 +12,7 @@ export { html } from './html'
 export { url } from './url'
 
 // export modifiers functions and constants
+export { adjust } from './adjust'
 export { add } from './add'
 export { set } from './set'
 export { to } from './to'

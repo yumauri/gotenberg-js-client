@@ -330,6 +330,31 @@ const toMergedPDF = pipe(
 )
 ```
 
+## Advanced fine adjustment
+
+There is special function `adjust`, which you can use to modify _any_ field in prepared internal `Request` object. You can check internal `Request` object structure in types. Any object, passed to `adjust`, will be merged with prepared `Request`.
+
+For example, you can modify `url`, if your Gotenberg instance is working behind reverse proxy with some weird url replacement rules:
+
+```typescript
+import { pipe, gotenberg, convert, html, adjust, please } from 'gotenberg-js-client'
+
+// Original Gotenberg HTML conversion endpoint is
+//   -> /convert/html
+// But your reverse proxy uses location
+//   -> /hidden/html/conversion
+const toPDF = pipe(
+  gotenberg('http://localhost:3000'),
+  convert,
+  html,
+  adjust({ url: '/hidden/html/conversion' }),
+  please
+)
+```
+
+But, using that function, remember about Peter Parker principle:
+> "With great power comes great responsibility"
+
 ## Bonus
 
 If you happen to use this package from JavaScript, you will, obviously, lost type safety, but in return, you can use [proposed pipe operator](https://github.com/tc39/proposal-pipeline-operator) (with [Babel plugin](https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator)), to get beauty like this:
