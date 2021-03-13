@@ -4,7 +4,7 @@ on: ['push', 'pull_request']
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -14,25 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-
-      - name: Setup Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Linting and check spelling
-        run: yarn lint
-
-      - name: Test and collect coverage
-        run: yarn test
-
-      - name: Build package
-        run: yarn build
-
-      - name: Push coverage to Coveralls
-        uses: coverallsapp/github-action@master
+      - run: yarn
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn build
+      - uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.github_token }}
