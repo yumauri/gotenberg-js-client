@@ -20,15 +20,19 @@ export const type: {
   (type: RequestType.Merge): (request: Request) => MergeRequest
   (type: RequestType.Office): (request: Request) => OfficeRequest
   (type: RequestType.Markdown): (request: Request) => MarkdownRequest
-} = (type: RequestType) => (request: Request): any => {
-  if ('type' in request && request.type !== RequestType.Undefined) {
-    throw new Error(
-      `Cannot set "${RequestType[type]}" conversion, already set to "${RequestType[request.type]}"`
-    )
-  }
+} =
+  (type: RequestType) =>
+  (request: Request): any => {
+    if ('type' in request && request.type !== RequestType.Undefined) {
+      throw new Error(
+        `Cannot set "${RequestType[type]}" conversion, already set to "${
+          RequestType[request.type]
+        }"`
+      )
+    }
 
-  return {
-    ...request,
-    type,
+    return {
+      ...request,
+      type,
+    }
   }
-}
