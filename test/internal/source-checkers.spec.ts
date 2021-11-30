@@ -1,3 +1,4 @@
+import { URL } from 'url'
 import { Readable } from 'stream'
 import {
   isBuffer,

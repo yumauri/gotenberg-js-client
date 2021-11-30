@@ -1,3 +1,4 @@
+import { URL } from 'url'
 import { Request, RequestType, url } from '../src'
 
 // dumb object to test purity

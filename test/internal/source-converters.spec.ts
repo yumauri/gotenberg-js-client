@@ -1,3 +1,4 @@
+import { URL } from 'url'
 import { Readable } from 'stream'
 import { basename } from 'path'
 import { createReadStream, ReadStream } from 'fs'

@@ -1,3 +1,4 @@
+import { URL } from 'url' // tslint:disable-line no-circular-imports
 import { client as native } from './client/node'
 import {
   GotenbergClient,

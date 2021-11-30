@@ -1,3 +1,4 @@
+import { URL } from 'url' // tslint:disable-line no-circular-imports
 import { Readable } from 'stream'
 import { FileURI, ObjectSource, PlainSource, Source, TupleSource } from '../_types'
 

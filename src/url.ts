@@ -1,5 +1,5 @@
 import { Request, RequestType, UrlRequest } from './_types'
-import { isString, isURL } from './internal/source-checkers'
+import { isString, isURL } from './internal/source-checkers' // tslint:disable-line no-circular-imports
 import { pipe } from './tools/pipe'
 import { fields } from './internal/fields'
 import { path } from './internal/path'

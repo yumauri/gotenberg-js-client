@@ -1,6 +1,7 @@
 import http from 'http'
 import https from 'https'
 import FormData from 'form-data'
+import { URL } from 'url'
 import { GotenbergClientFunction } from '../_types'
 
 /**
