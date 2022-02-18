@@ -26,6 +26,19 @@ Or using `npm`
 $ npm install --save gotenberg-js-client
 ```
 
+## NB ⚠️
+
+This library is not yet fully compatible with Gotenberg 7.<br/>
+You can find more info in [this comment](https://github.com/yumauri/gotenberg-js-client/issues/32#issuecomment-981140727).
+
+There are three main issues:
+
+- Gotenberg 7 has introduced new concept of conversion modules, thus, changing conversion URLs, so now they are different, than ones, this library creates. This can be sidestepped using custom connection string or adjusting URL manually (see [this comment](https://github.com/yumauri/gotenberg-js-client/issues/32#issuecomment-981140727)).
+- New modules has some new possibilities/parameters, which are impossible to pass, using this library. This can be sidestepped using `adjust`, and casting to `any`, if you use TypeScript (see [this issue](https://github.com/yumauri/gotenberg-js-client/issues/33) for reference).
+- Gotenberg 7 can potentially has many many different custom conversion modules, you can even write your own one. You can combine p.1 and p.2 to use any module with any path with any parameters, but I guess it will look not good. But it should work nonetheless.
+
+So, nothing you can live without, but there are some inconveniences. For a while ;)
+
 ## Usage
 
 ```typescript
