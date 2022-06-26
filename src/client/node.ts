@@ -37,7 +37,7 @@ export function post(
 
     req.on('error', reject)
     req.on('response', (res) => {
-      if (res.statusCode === 200) {
+      if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
         resolve(res)
       } else {
         let error = res.statusCode + ' ' + res.statusMessage
@@ -74,7 +74,7 @@ export function get(this: object | null, url: string): Promise<NodeJS.ReadableSt
 
     req.on('error', reject)
     req.on('response', (res) => {
-      if (res.statusCode === 200) {
+      if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
         resolve(res)
       } else {
         res.resume() // ignore response body
