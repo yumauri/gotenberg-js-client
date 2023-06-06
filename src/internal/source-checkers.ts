@@ -81,14 +81,17 @@ export const isIterable = (
 
 /**
  * Check, if given argument is simple string, and presumably is is just file name
- * I hope no one will wants to use filename longer than 50 symbols :)
  */
-const fileNameRE = /^[\p{L}\w\s\(\).,-]+\.[A-Za-z0-9]+$/u // tslint:disable-line no-empty-character-class
-const MIN_FILE_NAME_LENGTH = 3
-const MAX_FILE_NAME_LENGTH = 50
+const filenameRE = /.+\..+/
+const filenameReservedRE = /[<>:"/\\|?*\u0000-\u001F]/g
+const windowsReservedNameRE = /^(con|prn|aux|nul|com\d|lpt\d)$/i
+const MAX_FILE_NAME_LENGTH = 255
 export const isFileName = (x: Source | undefined | null) =>
   isString(x) &&
-  !x.startsWith('file:') && // in ideal world there should be `!isFileUri(x)`, but TypeScript sucks here
-  x.length >= MIN_FILE_NAME_LENGTH &&
   x.length <= MAX_FILE_NAME_LENGTH &&
-  fileNameRE.test(x)
+  x !== '.' &&
+  x !== '..' &&
+  !x.startsWith('file:') && // in ideal world there should be `!isFileUri(x)`, but TypeScript sucks here
+  !filenameReservedRE.test(x) &&
+  !windowsReservedNameRE.test(x) &&
+  filenameRE.test(x)

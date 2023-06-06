@@ -53,7 +53,8 @@ test('Test `isFileName` function', function () {
   expect(isFileName('Screenshot 2021-12-24 at 09.16.20.png')).toBe(true) // <-
   expect(isFileName('.test.png')).toBe(true) // <-
   expect(isFileName('.png')).toBe(false)
-  expect(isFileName('🙀.png')).toBe(false)
+  expect(isFileName('🙀.png')).toBe(true) // <-
+  expect(isFileName('ces La esencia del cristianismo Dios es persona (jÃ³venes).docx')).toBe(true) // <-
   expect(isFileName(url)).toBe(false)
   expect(isFileName(array)).toBe(false)
   expect(isFileName(map)).toBe(false)
