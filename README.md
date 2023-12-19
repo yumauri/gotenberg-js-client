@@ -6,8 +6,8 @@
 [![NPM](https://img.shields.io/npm/v/gotenberg-js-client)](https://www.npmjs.com/package/gotenberg-js-client)
 ![Made with Love](https://img.shields.io/badge/made%20with-❤-red.svg)
 
-A simple JS/TS client for interacting with a [Gotenberg](https://thecodingmachine.github.io/gotenberg/) API.<br>
-[Gotenberg](https://thecodingmachine.github.io/gotenberg/) is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
+A simple JS/TS client for interacting with a [Gotenberg](https://gotenberg.dev/) API.<br>
+[Gotenberg](https://gotenberg.dev/) is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 
 - HTML and Markdown conversions using Google Chrome headless
 - Office conversions (.txt, .rtf, .docx, .doc, .odt, .pptx, .ppt, .odp and so on) using [unoconv](https://github.com/dagwieers/unoconv)
